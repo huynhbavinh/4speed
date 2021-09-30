@@ -14,7 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="img/logo/favison.ico.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/img/logo/favison.ico.ico')}}" />
     <title>4Speed-Know your bike, Control your speed</title>
 </head>
 
@@ -25,7 +25,7 @@
                 <div class="logo-container">
                     <h1>
                         <a href="#">
-                            <img src="img/logo/4speed_logo.png" alt="4Speed">
+                            <img src="{{asset('/storage/img/logo/4speed_logo.png')}}" alt="4Speed">
                         </a>
                     </h1>
                 </div>
@@ -71,7 +71,7 @@
             </div>
         </menu>
     </header>
-    <main class="py-4">
+    <main class="">
         @yield('content')
     </main>
     <footer>

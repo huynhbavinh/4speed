@@ -27,7 +27,7 @@
                 <div class="mySlides fade">
                     <div class="numbertext">4 / 4</div>
                     <div class="banner-container">
-                        <img src="{{ asset('storage/img/banner/v4ducati.jpg')" alt="Ducati v4 2020">
+                        <img src="{{ asset('storage/img/banner/v4ducati.jpg')}}" alt="Ducati v4 2020">
                     </div>
                 </div>
 
