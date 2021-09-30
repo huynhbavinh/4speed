@@ -1,0 +1,207 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+    font-family: 'Roboto Slab', serif;
+    color: black;
+    scroll-behavior: smooth;
+}
+
+html {
+    background-color: black;
+}
+
+.wrap {
+    max-width: 1160px;
+    margin: 0px auto;
+}
+
+.white-font {
+    color: white;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 110px;
+    background-color: rgba(253, 253, 253, 0.8);
+    menu {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        .menu-logo .logo-container {
+            display: inline-block;
+            max-width: 100%;
+        }
+        .menu-content {
+            text-align: end;
+        }
+        .menu-logo .logo-container img {
+            display: block;
+            width: 100%;
+        }
+        .menu-content .menu-about-us {
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}
+
+.menu-service {
+    display: flex;
+    justify-content: flex-end;
+}
+
+header menu .menu-content .menu-about-us li {
+    margin: 10px 10px;
+}
+
+.menu-service li {
+    margin: 10px 10px;
+    border-right: 2px solid black;
+    line-height: 10px;
+    color: black;
+}
+
+header menu .menu-content .menu-about-us li:hover a,
+.menu-service li:hover a {
+    color: rgb(172, 166, 166);
+}
+
+header menu .menu-content {
+    .menu-about-us li a {
+        font-weight: 350;
+    }
+    .menu-service li a {
+        font-weight: bold;
+        font-size: 20px;
+        padding: 5px 15px;
+    }
+}
+
+main section .banner .banner-container {
+    display: inline-block;
+    width: 100%;
+    img {
+        display: block;
+        width: 100%;
+    }
+}
+
+footer {
+    background-color: black;
+    .wrap {
+        display: flex;
+        justify-content: flex-start;
+        padding: 20px 0px;
+    }
+    .box-lienlac {
+        border: 1px solid white;
+        position: relative;
+        margin: 10px;
+        span {
+            color: white;
+            position: absolute;
+            top: -15px;
+            left: 15px;
+            background-color: black;
+            text-transform: uppercase;
+            padding: 0px 10px;
+            font-weight: 300;
+        }
+        ul {
+            display: flex;
+            justify-content: space-between;
+            li a {
+                i {
+                    color: white;
+                    font-size: 30px;
+                    padding: 20px;
+                }
+                .youtube {
+                    color: red;
+                }
+                .facebook {
+                    color: rgb(65, 65, 240);
+                }
+                .insta {
+                    color: plum;
+                }
+            }
+        }
+    }
+    div h4 {
+        color: white;
+        text-align: center;
+        a {
+            color: aqua;
+        }
+    }
+    .thongtinlienlac {
+        display: flex;
+        justify-content: flex-start;
+        margin-left: 111px;
+    }
+    div h2 {
+        text-transform: uppercase;
+        color: white;
+    }
+    .group-btn {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        .btn {
+            height: 50px;
+            width: 300px;
+            text-align: center;
+            line-height: 50px;
+            background-color: rgb(65, 65, 65);
+            margin-right: 20px;
+            &:hover {
+                cursor: pointer;
+                background-color: rgb(104, 104, 104);
+            }
+        }
+    }
+}
+
+.login-now {
+    display: inline-block;
+    background-color: rgb(55, 55, 233);
+    border-radius: 100%;
+    position: fixed;
+    top: 90%;
+    left: 95%;
+    h4 a {
+        &:hover span {
+            display: inline-block;
+        }
+        i {
+            padding: 10px;
+            font-size: 22px;
+        }
+        span {
+            display: none;
+            border-radius: 22px;
+            position: absolute;
+            top: -74px;
+            left: -70px;
+            background-color: rgb(55, 55, 233);
+            padding: 20px;
+        }
+    }
+}
+
+#triangle-up {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid rgb(55, 55, 233);
+    position: absolute;
+    top: 55px;
+    left: 75px;
+}
