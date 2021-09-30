@@ -128,7 +128,7 @@
     </footer>
     <div class="login-now">
         <h4 class="white-font">
-            <a href="login.html">
+            <a href="{{ route('login') }}">
                 <i class="fas fa-sign-in-alt white-font"></i>
                 <span class="white-font">Join now
                     <label id="triangle-up"></label>
