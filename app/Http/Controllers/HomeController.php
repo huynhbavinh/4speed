@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
+use App\Models\MotoCycles;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+        $splitName = explode(" ",$user->name);
+        $lastUsername = array_pop($splitName);
+
+        $listMoto = MotoCycles::paginate(6);
+        
+
+        $data=[
+            'listMoto' => $listMoto,
+            'lastName' => $lastUsername,
+        ];
+        return view('home')->with($data);
     }
 }

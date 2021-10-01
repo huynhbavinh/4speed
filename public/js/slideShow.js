@@ -43,12 +43,3 @@ function carousel() {
     x[slideIndex - 1].style.display = "block";
     setTimeout(carousel, 5000);
 }
-window.onscroll = function() { scrollFunction() };
-
-function scrollFunction() {
-    if (document.body.scrollTop > 2 || document.documentElement.scrollTop > 22) {
-        document.getElementById("navbar").style.padding = "5px 30px";
-    } else {
-        document.getElementById("navbar").style.padding = "5px";
-    }
-}

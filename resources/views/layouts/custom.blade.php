@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Css -->
     <link rel="stylesheet" href=" {{ asset('css/app.css') }}">
+    <link rel="stylesheet" href=" {{ asset('css/product.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/slide.css') }}">
     <link rel="stylesheet" href=" {{ asset('fontawesome-free-5.15.4-web/css/all.css') }} ">
     <!-- Font chữ -->
@@ -20,7 +21,7 @@
 </head>
 
 <body>
-    <header>
+    <header id="white-background">
         <menu id="navbar" class="wrap">
             <div class="menu-logo">
                 <div class="logo-container">
@@ -54,7 +55,7 @@
                         <a href="">Discover</a>
                     </li>
                     <li>
-                        <a href="">Sản phẩm</a>
+                        <a href="{{ route('home') }}">Sản phẩm</a>
                     </li>
                     <li>
                         <a href="">Dịch vụ</a>
@@ -72,7 +73,7 @@
             </div>
         </menu>
     </header>
-    <main class="">
+    <main>
         @yield('content')
     </main>
     <footer>
@@ -127,18 +128,9 @@
             </h4>
         </div>
     </footer>
-    <div class="login-now">
-        <h4 class="white-font">
-            <a href="{{ route('login') }}">
-                <i class="fas fa-sign-in-alt white-font"></i>
-                <span class="white-font">Join now
-                    <label id="triangle-up"></label>
-                </span>
-            </a>
-        </h4>
-    </div>
-
 </body>
+<script src="{{ asset('js/eventMenuScroll.js') }}"></script>
 <script src="{{ asset('js/slideShow.js') }}"></script>
+
 
 </html>

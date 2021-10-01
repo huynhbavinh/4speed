@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MotoCyclesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix'=>'home','middleware'=>['auth']],function(){
+    Route::resource('sanpham', MotoCyclesController::class)->names('Home.sanpham');
+    //Route::post('upload-thumbnail', [UserArticleController::class,'uploadImage'])->name('userUploadImg');
+});

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MotoCycles;
 use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class MotoCyclesController extends Controller
 {
@@ -14,7 +15,10 @@ class MotoCyclesController extends Controller
      */
     public function index()
     {
-        //
+        $listMoto = MotoCycles::paginate(6);
+        foreach($listMoto as $moto){
+            echo $moto->specifications;
+        }
     }
 
     /**
