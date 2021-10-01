@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Css -->
     <link rel="stylesheet" href=" {{ asset('css/app.css') }}">
+    <link rel="stylesheet" href=" {{ asset('css/slide.css') }}">
     <link rel="stylesheet" href=" {{ asset('fontawesome-free-5.15.4-web/css/all.css') }} ">
     <!-- Font chữ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -32,25 +32,37 @@
                     </div>
                     <div id="bieu-mau">
                         <p>Đăng Nhập</p>
-                        <form id="info">
+                        <form action="{{ route('login') }}" method="post">
+                            {{ csrf_field() }}
                             <div id="email">
                                 <label class="label">Username</label>
                                 <div class="control">
-                                    <input type="text">
+                                    <input type="text" name="username">
                                 </div>
+                                @if($errors->has('username'))
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </div>
+                                @endif
                             </div>
                             <div id="password">
                                 <label class="label">Passwords</label>
                                 <div class="control">
-                                    <input type="text">
+                                    <input type="password" name="password">
                                 </div>
+                                @if($errors->has('password'))
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </div>
+                                @endif
                             </div>
+                            <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
+                                <span class="fas fa-sign-in-alt"></span>
+                                {{ __('adminlte::adminlte.sign_in') }}
+                            </button>
                         </form>
                     </div>
                     <div id="btn-control">
-                        <button>
-                        Đăng nhập
-                    </button>
                         <a href=""> Quên mật khẩu?</a>
                     </div>
                     <div id="another-login">
@@ -68,7 +80,9 @@
                     </button>
                     </div>
                     <div id="dang-ky">
-                        <a href="">Đăng ký</a>
+                        <a href="">
+                            đăng ký ngay
+                        </a>
                         <p>nếu chưa có tài khoản</p>
                     </div>
                 </div>
