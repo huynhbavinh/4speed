@@ -17,11 +17,16 @@ class CreateMotoCyclesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('price');
+            $table->string('title');
+            $table->string('thumbnail');
+            $table->integer('category_id');
             $table->json('specifications');
             $table->text('detail');
             $table->json('options');
             $table->json('path');
             $table->integer('user_id');
+            $table->boolean('is_hot')->default(false);
+
             $table->softDeletes();
 
             $table->timestamps();

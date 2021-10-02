@@ -20,9 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix'=>'home','middleware'=>['auth']],function(){
-    Route::resource('sanpham', MotoCyclesController::class)->names('Home.sanpham');
+    Route::resource('sanpham', MotoCyclesController::class)->names('homeSanpham');
     //Route::post('upload-thumbnail', [UserArticleController::class,'uploadImage'])->name('userUploadImg');
+    //Route::get('chitiet/{id}', [MotoCyclesController::class,'show'])->name('chitiet');
+
 });
+Route::get('chitiet/{id}', [MotoCyclesController::class,'show'])->name('chitiet');

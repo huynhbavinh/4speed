@@ -8,14 +8,16 @@
                         <!-- items product card -->
                         @foreach ($listMoto as $moto)
                             <div class="product-card">
-                                <div class="badge">Hot</div> <!-- kiem tra HOT hay khong -->
+                                @if ($moto->is_hot == true)
+                                    <div class="badge">HOT</div>
+                                @endif
                                 <div class="product-tumb">
-                                    <img src="{{ asset('storage/img/banner/hondaCBR1000rrr.jpg')}}" alt="">
+                                    <img src="{{ asset('storage/img/product').'/'.$moto->thumbnail }}" alt="">
                                 </div>
                                 <div class="product-details">
-                                    <span class="product-catagory">Yamaha</span><!-- kiem tra category -->
-                                    <h4><a href="">{{ $moto->name }}</a></h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, possimus nostrum!</p> <!-- thieu mieu ta tong quan -->
+                                    <span class="product-catagory"> {{ $moto->category->name}} </span>
+                                    <h4><a href=" {{ route('homeSanpham.show',$moto) }} ">{{ $moto->name }}</a></h4>
+                                    <p>{{ $moto->title }}</p>
                                     <div class="product-bottom-details">
                                         <div class="product-links">
                                             <a href=""><i class="fa fa-heart"></i></a></div>

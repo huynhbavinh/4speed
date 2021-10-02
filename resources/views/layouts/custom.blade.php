@@ -55,7 +55,7 @@
                         <a href="">Discover</a>
                     </li>
                     <li>
-                        <a href="{{ route('home') }}">Sản phẩm</a>
+                        <a href="{{ route('homeSanpham.index') }}">Sản phẩm</a>
                     </li>
                     <li>
                         <a href="">Dịch vụ</a>

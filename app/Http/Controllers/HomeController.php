@@ -25,17 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        $splitName = explode(" ",$user->name);
-        $lastUsername = array_pop($splitName);
-
-        $listMoto = MotoCycles::paginate(6);
         
-
-        $data=[
-            'listMoto' => $listMoto,
-            'lastName' => $lastUsername,
-        ];
-        return view('home')->with($data);
     }
 }

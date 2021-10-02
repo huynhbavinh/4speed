@@ -12,9 +12,12 @@ class MotoCycles extends Model
     protected $fillable = [
         'name',
         'price',
+        'title',
+        'category_id',
         'specifications',
         'detail',
         'options',
+        'thumbnail',
         'path',
     ];
     protected $casts = [
@@ -22,4 +25,10 @@ class MotoCycles extends Model
         'options' => 'array',
         'path' => 'array',
     ];
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

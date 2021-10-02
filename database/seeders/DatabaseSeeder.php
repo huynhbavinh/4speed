@@ -1,8 +1,6 @@
 <?php
 
 namespace Database\Seeders;
-
-use App\Models\MotoCycles;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +15,9 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             ProductTableSeeder::class,
-
+            CategoryTableSeeder::class,
+            RolesTableSeeder::class,
+            UserTableSeeder::class,
         ]);
     }
 }
