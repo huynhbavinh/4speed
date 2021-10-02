@@ -54,11 +54,9 @@ class MotoCyclesController extends Controller
      * @param  \App\Models\MotoCycles  $motoCycles
      * @return \Illuminate\Http\Response
      */
-    public function show(MotoCycles $motoCycles)
-    {
-        // $data = MotoCycles::where('id',$id)->get();
-        // return view('productDetails')->with('moto',$data);
-        return $motoCycles;
+    public function show(MotoCycles $sanpham)
+    {   
+        return view('productDetails')->with('moto',$sanpham);
     }
 
     /**

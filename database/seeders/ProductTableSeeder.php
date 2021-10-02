@@ -20,7 +20,7 @@ class ProductTableSeeder extends Seeder
             'title' => 'this is title123123',
             'category_id' => 1,
             'specifications'=> json_encode([
-                        "Động cơ" => 1,
+                        "Động cơ" => '112 mã lực',
                         "Tỉ số nén" => 1, 
                         "Mô-men xoắn cực đại" => 1, 
                         "Đường kính xi lanh X pít tông" => 1213,
