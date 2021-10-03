@@ -76,7 +76,7 @@
                                 <!-- section comment -->
                                 @foreach ($comments as $comm)
                                 <li>
-                                    <div class="comment-section">
+                                    <div id="comment-area" class="comment-section">
                                         <div class="circle-avt">
                                             <img src="{{ asset('storage/img/avt/avtmau.jpg') }}" alt="">
                                         </div>
@@ -85,9 +85,19 @@
                                             <p>{{$comm->content}} Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus quaerat aliquid neque tempora, numquam velit? Dolore reprehenderit excepturi animi magni in ullam esse tempora recusandae non? Doloremque laudantium nihil dolorem! </p>
                                         </div>
                                         <span class="like-comment">
-                                            <a href="">{{$comm->like}}
-                                                <i class="fas fa-thumbs-up"></i>
-                                            </a>
+                                            {{$comm->like}}
+                                            @if (empty($user->interact))
+                                                <i class="fas fa-thumbs-up" ></i>
+                                            @elseif(in_array(strval($comm->id),json_decode($user->interact,true)))
+                                                <i class="fas fa-thumbs-up" style="color: rgb(23, 217, 252); font-size: 16px" ></i>
+                                            @else
+                                                <i class="fas fa-thumbs-up" ></i>
+                                            @endif
+                                            <form class="action-like" action=" {{route('liked')}} " method="post">
+                                                @csrf
+                                                <input type="number" name="id_comm" value="{{$comm->id}}" style="display: none">
+                                                <button class="btn-like" type="submit">Like</button>
+                                            </form>
                                         </span>
                                     </div>
                                 </li>

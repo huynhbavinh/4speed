@@ -11,7 +11,7 @@ use App\Models\User;
 class comment extends Model
 {
     use HasFactory;
-    protected $fillable=['content','product_id','user_id'];
+    protected $fillable=['content','product_id','user_id','like'];
     
     public function product(){
         return $this->belongsTo(MotoCycles::class);
