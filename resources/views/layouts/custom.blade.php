@@ -10,7 +10,9 @@
     <!-- Css -->
     <link rel="stylesheet" href=" {{ asset('css/app.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/product.css') }}">
+    <link rel="stylesheet" href=" {{ asset('css/detail.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/slide.css') }}">
+
     <link rel="stylesheet" href=" {{ asset('fontawesome-free-5.15.4-web/css/all.css') }} ">
     <!-- Font chữ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +28,7 @@
             <div class="menu-logo">
                 <div class="logo-container">
                     <h1>
-                        <a href="#">
+                        <a href=" {{route('welcome')}} ">
                             <img src="{{asset('/storage/img/logo/4speed_logo.png')}}" alt="4Speed">
                         </a>
                     </h1>

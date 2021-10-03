@@ -18,6 +18,7 @@
                                     <span class="product-catagory"> {{ $moto->category->name}} </span>
                                     <h4><a href=" {{ route('homeSanpham.show',$moto) }} ">{{ $moto->name }}</a></h4>
                                     <p>{{ $moto->title }}</p>
+                                    <span class="product-catagory" style="color: black"> Giá thị trường {{ $moto->price}} </span>
                                     <div class="product-bottom-details">
                                         <div class="product-links">
                                             <a href=""><i class="fa fa-heart"></i></a></div>

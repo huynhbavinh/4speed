@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\comment;
-use App\Models\MotoCycles;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use SebastianBergmann\Environment\Console;
 
-class MotoCyclesController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +14,7 @@ class MotoCyclesController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        $splitName = explode(" ",$user->name);
-        $lastUsername = array_pop($splitName);
-
-        $listMoto = MotoCycles::paginate(6);
-        $data=[
-            'listMoto' => $listMoto,
-            'lastName' => $lastUsername,
-        ];
-        return view('home')->with($data);
+        //
     }
 
     /**
@@ -53,28 +41,21 @@ class MotoCyclesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\MotoCycles  $motoCycles
+     * @param  \App\Models\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(MotoCycles $sanpham)
-    {   
-        $comments = comment::where('product_id',$sanpham->id)->get();
-        $user = auth()->user();
-        $data=[
-            'moto'=>$sanpham,
-            'comments'=>$comments,
-            'user'=>$user,
-        ];
-        return view('details')->with($data);
+    public function show(comment $comment)
+    {
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\MotoCycles  $motoCycles
+     * @param  \App\Models\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(MotoCycles $motoCycles)
+    public function edit(comment $comment)
     {
         //
     }
@@ -83,10 +64,10 @@ class MotoCyclesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\MotoCycles  $motoCycles
+     * @param  \App\Models\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MotoCycles $motoCycles)
+    public function update(Request $request, comment $comment)
     {
         //
     }
@@ -94,10 +75,10 @@ class MotoCyclesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\MotoCycles  $motoCycles
+     * @param  \App\Models\comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MotoCycles $motoCycles)
+    public function destroy(comment $comment)
     {
         //
     }

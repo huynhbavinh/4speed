@@ -15,7 +15,7 @@ use App\Http\Controllers\MotoCyclesController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->name('welcome');
 })->name('welcome');
 
 Auth::routes();
@@ -25,7 +25,4 @@ Auth::routes();
 Route::group(['prefix'=>'home','middleware'=>['auth']],function(){
     Route::resource('sanpham', MotoCyclesController::class)->names('homeSanpham');
     //Route::post('upload-thumbnail', [UserArticleController::class,'uploadImage'])->name('userUploadImg');
-    //Route::get('chitiet/{id}', [MotoCyclesController::class,'show'])->name('chitiet');
-
 });
-Route::get('chitiet/{id}', [MotoCyclesController::class,'show'])->name('chitiet');

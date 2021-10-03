@@ -16,9 +16,17 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         User::create([
-            'name' => 'huynhbavinh',
+            'name' => 'Huỳnh Bá Vinh',
             'username' => 'huynhbavinh',
             'email' => 'huynhbavinh@gmail.vn',
+            'role_id'=>1,
+            'password' => Hash::make('123123123'),
+            
+        ]);
+        User::create([
+            'name' => 'Chung Thành Lưu',
+            'username' => 'trungthanhluu',
+            'email' => 'trungthanh@gmail.vn',
             'role_id'=>1,
             'password' => Hash::make('123123123'),
             
