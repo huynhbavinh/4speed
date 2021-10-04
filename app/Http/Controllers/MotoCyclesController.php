@@ -58,7 +58,7 @@ class MotoCyclesController extends Controller
      */
     public function show(MotoCycles $sanpham)
     {   
-        $comments = comment::where('product_id',$sanpham->id)->get();
+        $comments = comment::where('product_id',$sanpham->id)->paginate(3);
         $user = auth()->user();
         $data=[
             'moto'=>$sanpham,

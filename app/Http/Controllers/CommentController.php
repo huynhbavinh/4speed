@@ -38,7 +38,12 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $newComm = new comment();
+        $newComm->fill($request->all());
+        $returnProduct = MotoCycles::find($request->product_id);
+        auth()->user()->comments()->save($newComm);
+        return redirect()
+                ->action([MotoCyclesController::class, 'show'],['sanpham'=>$returnProduct]);
     }
 
     /**
@@ -115,7 +120,7 @@ class CommentController extends Controller
         }
         $getUser->save();
         $updateLike->save();
-        return redirect()->action([MotoCyclesController::class, 'show'],
-                                                            ['sanpham'=>$returnProduct]);
+        return redirect()
+                ->action([MotoCyclesController::class, 'show'],['sanpham'=>$returnProduct]);
     }
 }

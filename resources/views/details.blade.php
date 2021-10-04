@@ -1,7 +1,7 @@
 @extends('layouts.custom')
 @section('content')
 <section>
-    <div class="backgroundProduct" style="background-image: url(img/banner/backgorund-product.jpg); background-size: contain;">
+    <div class="backgroundProduct" style="background-image: url({{ asset('storage/img/banner/backgorund-product.jpg')}}); background-size: contain;">
         <div class="productContent">
             <div class="cardProductContainer">
                 <div class="cardProduct wrap">
@@ -33,11 +33,14 @@
                                     @foreach (json_decode($moto->specifications ,true) as $key => $value)
                                     <tr>
                                         <td>
-                                            {{$key}}
+                                            <b>
+                                                {{$key}}
+                                            </b>
                                         </td>
                                         <td>
-                                            {{$value}}
-                                            lor
+                                            <i style="font-style: italic">
+                                                {{$value}}
+                                            </i>
                                         </td>
                                     </tr>
                                     @endforeach
@@ -57,7 +60,7 @@
                                                 <h3>
                                                     {{$key}}
                                                 </h3>
-                                                <p style="margin-left: 10px">
+                                                <p style="margin-left: 10px; font-style: italic">
                                                     {{$value}}
                                                     lor
                                                 </p>
@@ -72,7 +75,7 @@
                             <h3 class="title-border">Đánh giá</h3>
                         </div>
                         <div class="spacing-table-element">
-                            <ul class="wrap">
+                            <ul class="wrap commentWrap">
                                 <!-- section comment -->
                                 @foreach ($comments as $comm)
                                 <li>
@@ -102,12 +105,17 @@
                                     </div>
                                 </li>
                                 @endforeach
+                                <div class="style-links-path">
+                                    {{$comments->links('customPagition')}}
+                                </div>
                                 <!-- section comment -->
                                 <div class="form wrap">
-                                    <form action="">
+                                    <form action=" {{route('postComment')}} " method="POST">
+                                        @csrf
                                         <h3>Chào! <label for="">{{$user->name}} </label>. Hãy để lại đánh giá của bạn:</h3>
-                                        <textarea name="" id="" cols="99" rows="10" placeholder="Viết đánh giá tại đây"></textarea>
-                                        <button>Đăng bài đánh giá</button>
+                                        <input type="number" name="product_id" value="{{$moto->id}}" style="display: none">
+                                        <textarea name="content" id="" cols="99" rows="10" placeholder="Viết đánh giá tại đây" style="padding: 11px"></textarea>
+                                        <button class="btn-like" type="submit">Đăng bài đánh giá</button>
                                     </form>
                                 </div>
                             </ul>
@@ -118,5 +126,4 @@
         </div>
     </div>
 </section>
-
 @endsection

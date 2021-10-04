@@ -8,12 +8,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Css -->
-    <link rel="stylesheet" href=" {{ asset('css/app.css') }}">
+    <link rel="stylesheet" href=" {{ asset('fontawesome-free-5.15.4-web/css/all.css') }} ">
+
+    <link rel="stylesheet" href=" {{ asset('css/styleCustom.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/product.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/detail.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/slide.css') }}">
 
-    <link rel="stylesheet" href=" {{ asset('fontawesome-free-5.15.4-web/css/all.css') }} ">
     <!-- Font chữ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

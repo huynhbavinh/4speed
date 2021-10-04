@@ -131,3 +131,16 @@ table td {
     border: none;
     border-radius: 10px;
 }
+
+.style-links-path {}
+
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px auto;
+}
+
+.pagination li {
+    margin: 0px 10px;
+    font-size: 20px;
+}

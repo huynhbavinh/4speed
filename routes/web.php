@@ -28,3 +28,5 @@ Route::group(['prefix'=>'home','middleware'=>['auth']],function(){
     //Route::post('upload-thumbnail', [UserArticleController::class,'uploadImage'])->name('userUploadImg');
 });
 Route::post('like',[CommentController::class,'likeVote'])->name('liked');
+Route::post('post',[CommentController::class,'store'])->name('postComment');
+
