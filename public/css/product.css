@@ -113,7 +113,7 @@ main section .productContent .cardProductContainer {
     color: #fbb72c;
 }
 
-.product-links a .fa-heart:hover {
+.product-links button:hover .fa-heart {
     color: red;
 }
 
@@ -125,8 +125,49 @@ main section .productContent .cardProductContainer {
     background-color: rgb(55, 55, 233);
     border-radius: 100%;
     position: fixed;
-    top: 90%;
+    top: 85%;
     left: 95%;
+}
+
+.logout-btn {
+    display: inline-block;
+    background-color: red;
+    color: white;
+    border-radius: 20px;
+    position: fixed;
+    top: 94%;
+    left: 94%;
+    padding: 5px;
+}
+
+.logout-btn h4 a i {
+    padding: 10px;
+    font-size: 22px;
+}
+
+.logout-btn h4 a span {
+    display: none;
+    border-radius: 22px;
+    position: absolute;
+    top: -76px;
+    left: -60px;
+    background-color: red;
+    padding: 20px;
+}
+
+.logout-btn h4 a:hover span {
+    display: inline-block;
+}
+
+#triangle-up-logout {
+    width: 0;
+    height: 0;
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 24px solid red;
+    position: absolute;
+    top: 50px;
+    left: 65px;
 }
 
 .profile-btn h4 a:hover span {

@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href=" {{ asset('css/styleLogin.css') }}">
+    <link rel="stylesheet" href=" {{ asset('css/detail.css') }}">
+
     <link rel="stylesheet" href=" {{ asset('fontawesome-free-5.15.4-web/css/all.css') }} ">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('storage/img/logo/favison.ico.ico')}}" />
     <title>4Speed-Login</title>
@@ -56,8 +58,8 @@
                                     </div>
                                 @endif
                             </div>
-                            <button type=submit class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">
-                                <span class="fas fa-sign-in-alt"></span>
+                            <button class="btn-like" type="submit">
+                                <span class="fas fa-sign-in-alt" style="margin-right: 10px"></span>
                                 {{ __('adminlte::adminlte.sign_in') }}
                             </button>
                         </form>

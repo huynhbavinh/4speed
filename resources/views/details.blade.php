@@ -33,12 +33,12 @@
                                     @foreach (json_decode($moto->specifications ,true) as $key => $value)
                                     <tr>
                                         <td>
-                                            <b>
+                                            <b style="padding: 5px">
                                                 {{$key}}
                                             </b>
                                         </td>
                                         <td>
-                                            <i style="font-style: italic">
+                                            <i style="font-style: italic; padding: 5px">
                                                 {{$value}}
                                             </i>
                                         </td>
@@ -81,7 +81,9 @@
                                 <li>
                                     <div id="comment-area" class="comment-section">
                                         <div class="circle-avt">
-                                            <img src="{{ asset('storage/img/avt/avtmau.jpg') }}" alt="">
+                                            <a href=" {{route('userProfile.show',$comm->user_id)}}">
+                                                <img src="{{ asset('storage/img/avt/avtmau.jpg') }}" alt="">
+                                            </a>
                                         </div>
                                         <div class="comment-content">
                                             <h4> {{$comm->user->name}} </h4>
@@ -112,7 +114,7 @@
                                 <div class="form wrap">
                                     <form action=" {{route('postComment')}} " method="POST">
                                         @csrf
-                                        <h3>Chào! <label for="">{{$user->name}} </label>. Hãy để lại đánh giá của bạn:</h3>
+                                        <h3>Chào! <a style="color: rgb(87, 194, 194)" href="{{route('userProfile.show',auth()->user()->id)}}">{{$user->name}} </a>. Hãy để lại đánh giá của bạn:</h3>
                                         <input type="number" name="product_id" value="{{$moto->id}}" style="display: none">
                                         <textarea name="content" id="" cols="99" rows="10" placeholder="Viết đánh giá tại đây" style="padding: 11px"></textarea>
                                         <button class="btn-like" type="submit">Đăng bài đánh giá</button>

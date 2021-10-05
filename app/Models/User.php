@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\comment;
+use App\Models\MotoCycles;
 
 class User extends Authenticatable
 {
@@ -47,5 +48,8 @@ class User extends Authenticatable
 
     public function comments(){
         return $this->hasMany(comment::class);
+    }
+    public function userListFavorite(){
+        return $this->belongsToMany(MotoCycles::class);
     }
 }

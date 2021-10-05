@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MotoCyclesController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,15 @@ Route::group(['prefix'=>'home','middleware'=>['auth']],function(){
     Route::resource('sanpham', MotoCyclesController::class)->names('homeSanpham');
     //Route::post('upload-thumbnail', [UserArticleController::class,'uploadImage'])->name('userUploadImg');
 });
+Route::group(['prefix'=>'user','middleware'=>['auth']],function(){
+    //Route::get('profile',[UserController::class,'show'])->name('user.profile');
+    //Route::post('upload-thumbnail', [UserArticleController::class,'uploadImage'])->name('userUploadImg');
+    Route::resource('profile', UserController::class)->names('userProfile');
+
+});
 Route::post('like',[CommentController::class,'likeVote'])->name('liked');
 Route::post('post',[CommentController::class,'store'])->name('postComment');
+Route::post('favorite',[UserController::class,'addFavorite'])->name('favorite');
+
+
 

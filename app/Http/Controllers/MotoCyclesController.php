@@ -25,6 +25,7 @@ class MotoCyclesController extends Controller
         $data=[
             'listMoto' => $listMoto,
             'lastName' => $lastUsername,
+            'userLogin'=> $user,
         ];
         return view('home')->with($data);
     }

@@ -130,9 +130,8 @@ table td {
     display: inline-block;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
 }
-
-.style-links-path {}
 
 .pagination {
     display: flex;

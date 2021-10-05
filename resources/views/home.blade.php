@@ -19,9 +19,20 @@
                                     <h4><a href=" {{ route('homeSanpham.show',$moto) }} ">{{ $moto->name }}</a></h4>
                                     <p>{{ $moto->title }}</p>
                                     <span class="product-catagory" style="color: black"> Giá thị trường {{ $moto->price}} </span>
-                                    <div class="product-bottom-details">
-                                        <div class="product-links">
-                                            <a href=""><i class="fa fa-heart"></i></a></div>
+                                    <div class="product-links">
+                                        <form style="text-align: center" action="{{route('favorite')}}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="moto_id" value="{{$moto->id}}" style="display: none">
+                                            <button style="background-color: transparent" class="btn-like" type="submit">
+                                                @if (empty($userLogin->favorites))
+                                                    <i class="fa fa-heart"></i>
+                                                @elseif(in_array(strval($moto->id),json_decode($userLogin->favorites,true)))
+                                                    <i class="fa fa-heart" style="color: red; font-size: 16px" ></i>
+                                                @else
+                                                    <i class="fa fa-heart"></i>
+                                                @endif
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -32,13 +43,26 @@
         </div>
         <div class="profile-btn">
             <h4 class="white-font">
-                <a href="login.html">
+                <a href="{{route('userProfile.show',auth()->user()->id)}}">
                     <i class="fas fa-user-tie white-font"></i>
                     <span class="white-font">Xin chao! <label for="">{{ $lastName }}</label>
                         <label id="triangle-up-profile"></label>
                     </span>
                 </a>
             </h4>
+        </div>
+        <div class="logout-btn">
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </div>
         </div>
     </section>
     
