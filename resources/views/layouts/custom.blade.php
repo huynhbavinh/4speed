@@ -14,6 +14,8 @@
     <link rel="stylesheet" href=" {{ asset('css/product.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/detail.css') }}">
     <link rel="stylesheet" href=" {{ asset('css/slide.css') }}">
+    <link rel="stylesheet" href=" {{ asset('css/discover.css') }}">
+    
 
     <!-- Font chữ -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -55,7 +57,7 @@
                 </ul>
                 <ul class="menu-service">
                     <li>
-                        <a href="">Discover</a>
+                        <a href="{{ route('discover') }}">Discover</a>
                     </li>
                     <li>
                         <a href="{{ route('homeSanpham.index') }}">Sản phẩm</a>

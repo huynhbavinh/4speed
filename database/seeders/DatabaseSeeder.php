@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             RolesTableSeeder::class,
             UserTableSeeder::class,
             CommentTableSeeder::class,
+            FamousPeopleTableSeeder::class,
         ]);
     }
 }

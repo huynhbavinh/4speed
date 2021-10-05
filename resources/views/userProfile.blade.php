@@ -60,7 +60,7 @@
           <div class="row">
             <div class="col-lg-7 col-md-10">
               <h2 class="display-2 text-white">Hello! {{$userLogin->name}}</h2>
-              <p class="text-white mt-0 mb-5">This is <b style="font-size: 20px">{{$userProf->name}}</b> profile page. You can see the progress you've made with your work and manage your projects or assigned tasks</p>
+              <p class="text-white mt-0 mb-5">This is <b style="font-size: 20px">{{$userProf->name}}</b> profile page.</p>
               <a href="{{route('welcome')}}" class="btn btn-info">Quay lại</a>
             </div>
           </div>
@@ -137,7 +137,7 @@
                     <i class="ni education_hat mr-2"></i>University of Computer Science
                   </div>
                   <hr class="my-4">
-                  <p>Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music.</p>
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur ipsam nesciunt soluta consequuntur fuga vel dicta explicabo, officia, odit quam nostrum asperiores assumenda voluptas, optio porro provident vero. Excepturi, cumque.</p>
                 </div>
               </div>
             </div>

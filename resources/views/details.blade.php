@@ -18,6 +18,12 @@
                             </div>
                             <img src="{{ asset('storage/img/product').'/'.$moto->thumbnail }}" alt="">
                         </div>
+                        <div class="border">                       
+                            <h3 class="title-border">Video</h3> {{--thêm bên lang vào {{trans()}}--}}
+                        </div>
+                        <div class="product-tumb-small">
+                            <iframe width="100%" height="500px" src="https://www.youtube.com/embed/EFcnabBGb78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="border">
                             <h3 class="title-border">Thông số</h3>{{--thêm bên lang vào {{trans()}}--}}
                         </div>

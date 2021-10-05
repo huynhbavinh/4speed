@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MotoCyclesController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FamousPeopleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +27,7 @@ Auth::routes();
 
 Route::group(['prefix'=>'home','middleware'=>['auth']],function(){
     Route::resource('sanpham', MotoCyclesController::class)->names('homeSanpham');
+    
     //Route::post('upload-thumbnail', [UserArticleController::class,'uploadImage'])->name('userUploadImg');
 });
 Route::group(['prefix'=>'user','middleware'=>['auth']],function(){
@@ -37,6 +39,8 @@ Route::group(['prefix'=>'user','middleware'=>['auth']],function(){
 Route::post('like',[CommentController::class,'likeVote'])->name('liked');
 Route::post('post',[CommentController::class,'store'])->name('postComment');
 Route::post('favorite',[UserController::class,'addFavorite'])->name('favorite');
+Route::get('discover',[FamousPeopleController::class,'index'])->name('discover');
+
 
 
 
