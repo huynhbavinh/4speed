@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MotoCyclesController;
 use App\Http\Controllers\CommentController;
@@ -25,16 +26,20 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix'=>'home','middleware'=>['auth']],function(){
+Route::group(['prefix'=>'home','middleware'=>['auth','checkBlock']],function(){
     Route::resource('sanpham', MotoCyclesController::class)->names('homeSanpham');
     
     //Route::post('upload-thumbnail', [UserArticleController::class,'uploadImage'])->name('userUploadImg');
 });
-Route::group(['prefix'=>'user','middleware'=>['auth']],function(){
+Route::group(['prefix'=>'user','middleware'=>['auth','checkBlock','role:user']],function(){
     //Route::get('profile',[UserController::class,'show'])->name('user.profile');
     //Route::post('upload-thumbnail', [UserArticleController::class,'uploadImage'])->name('userUploadImg');
     Route::resource('profile', UserController::class)->names('userProfile');
 
+});
+Route::group(['prefix'=>'admin','middleware'=>['auth','checkBlock','role:admin']],function(){
+    Route::resource('dashboard', AdminController::class)->names('admin');
+    
 });
 Route::post('like',[CommentController::class,'likeVote'])->name('liked');
 Route::post('post',[CommentController::class,'store'])->name('postComment');

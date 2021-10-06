@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->boolean('isVip')->default(false);
+            $table->boolean('block')->default(false);
             $table->json('favorites')->nullable();
             $table->json('interact')->nullable();
             $table->rememberToken();

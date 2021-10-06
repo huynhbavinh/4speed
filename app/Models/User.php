@@ -52,4 +52,7 @@ class User extends Authenticatable
     public function userListFavorite(){
         return $this->belongsToMany(MotoCycles::class);
     }
+    public function role(){
+        return $this->belongsTo(role::class);
+    }
 }
