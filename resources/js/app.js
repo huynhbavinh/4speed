@@ -8,6 +8,13 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+import Vuex from 'vuex'
+import storeConfig from './store'
+
+Vue.use(Vuex)
+
+const store = new Vuex.Store(storeConfig)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -21,6 +28,12 @@ window.Vue = require('vue').default;
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('specifications-component', require('./components/SpecificationsComponent.vue').default);
+Vue.component('task-component', require('./components/TaskComponent.vue').default);
+Vue.component('create-article-component', require('./components/createArticleComponent.vue').default);
+Vue.component('image-component', require('./components/imageUploader.vue').default);
+
+
+
 
 
 /**
@@ -31,4 +44,5 @@ Vue.component('specifications-component', require('./components/SpecificationsCo
 
 const app = new Vue({
     el: '#app',
+    store,
 });

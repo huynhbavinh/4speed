@@ -1,66 +1,85 @@
 <template>
-   <div id="app">
-       <h1>Tạo bài viết</h1>
-            <input type="text" name="name" placeholder="tên bài viết">
-            <input type="text" name="price" placeholder="Giá cả">
-            <input type="text" name="title" placeholder="tên tiêu đè">
-        <!-- specifications -->
-       <ul>
-            <li v-for ="(item,index) in specificantions" :key="index">
-                <span>{{item.title}}</span>
-                <input type="text" v-model="specificantions[index].value">
-            </li>
-       </ul>
-        <!-- specifications -->
-            <input type="text" name="detail" placeholder="Chi tiết">
-        <!-- Options -->
+   <div>
+        <h2>Thông số kỹ thuật</h2>
         <ul>
-            <li v-for ="(item,index) in specificantions" :key="index">
-                <span>{{item.title}}</span>
-                <input type="text" v-model="specificantions[index].value">
+            <li>
+                <label for="dongCo">Động cơ</label>
+                <input v-model="spec.dongCo" type="text">
             </li>
-       </ul>
-       <!-- Options -->
-            <input type="text" name="thumbnail" placeholder="ảnh">
-        <!-- Path -->
-         <ul>
-            <li v-for ="(item,index) in specificantions" :key="index">
-                <span>{{item.title}}</span>
-                <input type="text" v-model="specificantions[index].value">
+            <li>
+                <label for="xyLanh">Xi Lanh</label>
+                <input v-model="spec.xiLanh" type="text">
             </li>
-       </ul>
-        <!-- Path -->
-       <button @click="showList">check</button>
+            <li>
+                <label for="tiSoNen">Tỉ số nén</label>
+                <input v-model="spec.tiSoNen" type="text">
+            </li>
+        </ul>
+        <h2>Phụ Tùng</h2>
+        <ul>
+            <li>
+                <label for="tayThang">tay thắng</label>
+                <input v-model="options.tayThang" type="text">
+            </li>
+            <li>
+                <label for="kinh">Kính chắn gió</label>
+                <input v-model="options.kinh" type="text">
+            </li>
+        </ul>
+        <button @click="passingData">Update</button>
+        <ol>
+            <li>{{specStore}}</li>
+            <li>{{optionStore}}</li>
+
+        </ol>
    </div>
 </template>
 
 <script>
+import {mapActions, mapGetters} from 'vuex'
     export default {
+        computed:{
+            ...mapGetters(['specStore']),
+            ...mapGetters(['optionStore']),
+
+        },
         data() {
             return {
-                specificantions:[
-                    { title: "Động cơ", value: "" },   
-                    { title: "Tỉ số nén",  value: "" } ,  
-                    { title: "Mô-men xoắn cực đại",  value: "" }   ,
-                    { title: "Đường kính xi lanh X pít tông", value: "" }   ,
-                    { title: "Hệ thống cung cấp nhiên liệu", value: "" }    ,
-                    { title: "Hệ thống đánh lửa",  value: "" } ,  
-                    { title: "Hệ thống truyền động", value: "" } ,  
-                    { title: "Vành và lốp", value: "" }   ,
-                    { title: "Hệ thống phanh trước", value: "" }  , 
-                    { title: "Hệ thống phanh sau", value: "" },   
-                    { title: "Dài x rộng x cao", value: "" } ,  
-                    { title: "Chiều dài cơ sở", value: "" },   
-                    { title: "Chiều cao yên", value: "" } ,  
-                    { title: "Chiều cao gầm" , value: "" }  , 
-                    { title: "Trọng lượng ướt", value: "" }   ,
-                    { title:"Dung tích bình xăng", value: "" }  ,  
-                    { title:"Dung tích dầu máy", value: "" } ,   
-                ]
+                spec:{ dongCo:'',xiLanh: '',tiSoNen:'' },
+                options:{ kinh:'',tayThang: ''},
+                specData:'',
+                optionsData:''
             }
         },
         methods:{
-            
+            exportDataSpec(){
+                var destroyStruc = JSON.stringify(this.spec);
+                var toJson = JSON.parse(destroyStruc);
+                this.specData = toJson;
+            },
+            exportDataOption(){
+                var destroyStruc = JSON.stringify(this.options);
+                var toJson = JSON.parse(destroyStruc);
+                this.optionsData = toJson;
+            },
+            passingData(){
+                this.exportDataSpec();
+                this.exportDataOption();
+                this.updateSpecStore(this.specData);
+                this.updateOptionStore(this.optionsData);
+
+            },
+            ...mapActions(['updateSpecStore']),
+            ...mapActions(['updateOptionStore']),
+
         }
     }
 </script>
+
+<style scoped>
+div ul li label{
+    margin-right: 20px;
+    width: 111px;
+}
+
+</style>

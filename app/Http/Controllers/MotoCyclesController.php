@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\comment;
 use App\Models\MotoCycles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use SebastianBergmann\Environment\Console;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class MotoCyclesController extends Controller
 {
@@ -17,17 +19,25 @@ class MotoCyclesController extends Controller
      */
     public function index()
     {
-        $user = auth()->user();
-        $splitName = explode(" ",$user->name);
-        $lastUsername = array_pop($splitName);
+        // $user = auth()->user();
+        // $splitName = explode(" ",$user->name);
+        // $lastUsername = array_pop($splitName);
 
-        $listMoto = MotoCycles::paginate(6);
+        // $listMoto = MotoCycles::paginate(6);
+        // $data=[
+        //     'listMoto' => $listMoto,
+        //     'lastName' => $lastUsername,
+        //     'userLogin'=> $user,
+        // ];
+        // return view('home')->with($data);
+        
+        $listCategories = Category::all();
+        $listMoto = MotoCycles::all();
         $data=[
-            'listMoto' => $listMoto,
-            'lastName' => $lastUsername,
-            'userLogin'=> $user,
+            'listCategories'=>$listCategories,
+            'listMoto'=>$listMoto,
         ];
-        return view('home')->with($data);
+        return $data;
     }
 
     /**
@@ -101,5 +111,15 @@ class MotoCyclesController extends Controller
     public function destroy(MotoCycles $motoCycles)
     {
         //
+    }
+    public function uploadImage(Request $request){
+        $filename = $request->file('thumbnail')->hashName();
+        $img =Image::make($request->file('thumbnail')->getRealPath());
+        // crop the best fitting 1:1 ratio (200x200) and resize to 200x200 pixel
+        $img->fit(250);   
+        // save the same file as jpg with default quality
+        $img->save(public_path('/storage/thumbnails/'.$filename));
+
+        return response()->json(['filename'=>$filename]);
     }
 }

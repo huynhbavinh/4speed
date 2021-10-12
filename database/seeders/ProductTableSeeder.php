@@ -46,12 +46,6 @@ class ProductTableSeeder extends Seeder
                         "Phanh truoc" => 1213,
             ]),
             'thumbnail' => 'r1Yamaha.jpg',
-            'path' =>json_encode([
-                        "path1" => 'r1Yamaha.jpg',
-                        "path2" => 1213, 
-                        "path3" => 1213, 
-                        "path4" => 1213,
-            ]),
             'user_id' => 1,
         ]);
         MotoCycles::create([
@@ -86,12 +80,6 @@ class ProductTableSeeder extends Seeder
                         "Phanh truoc" => 1213,
             ]),
             'thumbnail' => 'v4ducati.jpg',
-            'path' =>json_encode([
-                        "path1" => 'v4ducati.jpg',
-                        "path2" => 1213, 
-                        "path3" => 1213, 
-                        "path4" => 1213,
-            ]),
             'user_id' => 1,
         ]);
         MotoCycles::create([
@@ -124,12 +112,6 @@ class ProductTableSeeder extends Seeder
                         "Tay Con" => 1213, 
                         "Kinh chan gio" => 1213, 
                         "Phanh truoc" => 1213,
-            ]),
-            'path' =>json_encode([
-                        "path1" => 'ktm1290.jpg',
-                        "path2" => 1213, 
-                        "path3" => 1213, 
-                        "path4" => 1213,
             ]),
             'thumbnail' => 'ktm1290.jpg',
             'user_id' => 1,
@@ -166,12 +148,6 @@ class ProductTableSeeder extends Seeder
                         "Phanh truoc" => 1213,
             ]),
             'thumbnail' => 'v4ducati.jpg',
-            'path' =>json_encode([
-                        "path1" => 'v4ducati.jpg',
-                        "path2" => 1213, 
-                        "path3" => 1213, 
-                        "path4" => 1213,
-            ]),
             'user_id' => 1,
         ]);
     }

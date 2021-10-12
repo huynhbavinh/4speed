@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-<specifications-component></specifications-component>
+<create-article-component></create-article-component>
 @endsection

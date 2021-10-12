@@ -18,12 +18,10 @@ class MotoCycles extends Model
         'detail',
         'options',
         'thumbnail',
-        'path',
     ];
     protected $casts = [
         'specifications' => 'array',
         'options' => 'array',
-        'path' => 'array',
     ];
     public function category(){
         return $this->belongsTo(Category::class);

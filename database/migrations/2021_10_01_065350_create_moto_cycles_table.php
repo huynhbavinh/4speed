@@ -23,7 +23,6 @@ class CreateMotoCyclesTable extends Migration
             $table->json('specifications');
             $table->text('detail');
             $table->json('options');
-            $table->json('path');
             $table->integer('user_id');
             $table->boolean('is_hot')->default(false);
 
