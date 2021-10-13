@@ -6,4 +6,7 @@ export default {
     setOptionStore(state, optionStore) {
         state.optionStore = optionStore;
     },
+    setImgStore(state, imgProductStore) {
+        state.imgProductStore = imgProductStore;
+    },
 }

@@ -22,7 +22,7 @@
                             <h3 class="title-border">Video</h3> {{--thêm bên lang vào {{trans()}}--}}
                         </div>
                         <div class="product-tumb-small">
-                            <iframe width="100%" height="500px" src="https://www.youtube.com/embed/EFcnabBGb78" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="100%" height="500px" src="https://www.youtube.com/embed/ITRlw3zJoiA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div class="border">
                             <h3 class="title-border">Thông số</h3>{{--thêm bên lang vào {{trans()}}--}}
@@ -36,20 +36,37 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (json_decode($moto->specifications ,true) as $key => $value)
-                                    <tr>
-                                        <td>
-                                            <b style="padding: 5px">
-                                                {{$key}}
-                                            </b>
-                                        </td>
-                                        <td>
-                                            <i style="font-style: italic; padding: 5px">
-                                                {{$value}}
-                                            </i>
-                                        </td>
-                                    </tr>
-                                    @endforeach
+                                   @if ($moto->specifications)
+                                        @foreach ($moto->specifications as $key => $value)
+                                        <tr>
+                                            <td>
+                                                <b style="padding: 5px">
+                                                    {{$key}}
+                                                </b>
+                                            </td>
+                                            <td>
+                                                <i style="font-style: italic; padding: 5px">
+                                                    {{$value}}
+                                                </i>
+                                            </td>
+                                        </tr>
+                                        @endforeach 
+                                   @else
+                                        @foreach ($moto->specifications as $key => $value)
+                                        <tr>
+                                            <td>
+                                                <b style="padding: 5px">
+                                                    {{$key}}
+                                                </b>
+                                            </td>
+                                            <td>
+                                                <i style="font-style: italic; padding: 5px">
+                                                    {{$value}}
+                                                </i>
+                                            </td>
+                                        </tr>
+                                        @endforeach 
+                                   @endif
                                 </tbody>
                             </table>
                         </div>
@@ -59,7 +76,8 @@
                         <div class="spacing-table-element">
                             <div class="slide-show-product wrap">
                                 <div class="slideshow-container">
-                                    @foreach (json_decode($moto->options ,true) as $key => $value)
+                                    @if ($moto->options )
+                                    @foreach ($moto->options as $key => $value )
                                     <div class="mySlides fade">
                                         <div class="text">
                                             <div class="options-show">
@@ -73,7 +91,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @endforeach   
+                                    @endforeach 
+                               @else
+                                    @foreach ($moto->options as $key => $value)
+                                    <tr>
+                                        <td>
+                                            <b style="padding: 5px">
+                                                {{$key}}
+                                            </b>
+                                        </td>
+                                        <td>
+                                            <i style="font-style: italic; padding: 5px">
+                                                {{$value}}
+                                            </i>
+                                        </td>
+                                    </tr>
+                                    @endforeach 
+                               @endif   
                                 </div>
                             </div>
                         </div>

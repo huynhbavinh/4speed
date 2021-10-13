@@ -26,12 +26,7 @@
                 <input v-model="options.kinh" type="text">
             </li>
         </ul>
-        <button @click="passingData">Update</button>
-        <ol>
-            <li>{{specStore}}</li>
-            <li>{{optionStore}}</li>
-
-        </ol>
+        <button @click="passingData">Click</button>
    </div>
 </template>
 
@@ -39,9 +34,6 @@
 import {mapActions, mapGetters} from 'vuex'
     export default {
         computed:{
-            ...mapGetters(['specStore']),
-            ...mapGetters(['optionStore']),
-
         },
         data() {
             return {
@@ -62,7 +54,7 @@ import {mapActions, mapGetters} from 'vuex'
                 var toJson = JSON.parse(destroyStruc);
                 this.optionsData = toJson;
             },
-            passingData(){
+            passingData() {
                 this.exportDataSpec();
                 this.exportDataOption();
                 this.updateSpecStore(this.specData);
@@ -77,6 +69,7 @@ import {mapActions, mapGetters} from 'vuex'
 </script>
 
 <style scoped>
+
 div ul li label{
     margin-right: 20px;
     width: 111px;

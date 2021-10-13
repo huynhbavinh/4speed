@@ -19,5 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::resource('article', MotoCyclesController::class);
+Route::get('article', [MotoCyclesController::class,'APIpassdata']);
+Route::post('article', [MotoCyclesController::class,'store']);
+
 Route::post('upload-thumbnail', [MotoCyclesController::class,'uploadImage'])->name('userUploadImg');

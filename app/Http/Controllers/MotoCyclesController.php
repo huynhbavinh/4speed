@@ -19,25 +19,19 @@ class MotoCyclesController extends Controller
      */
     public function index()
     {
-        // $user = auth()->user();
-        // $splitName = explode(" ",$user->name);
-        // $lastUsername = array_pop($splitName);
+        $user = auth()->user();
+        $splitName = explode(" ",$user->name);
+        $lastUsername = array_pop($splitName);
 
-        // $listMoto = MotoCycles::paginate(6);
-        // $data=[
-        //     'listMoto' => $listMoto,
-        //     'lastName' => $lastUsername,
-        //     'userLogin'=> $user,
-        // ];
-        // return view('home')->with($data);
-        
-        $listCategories = Category::all();
-        $listMoto = MotoCycles::all();
+        $listMoto = MotoCycles::paginate(6);
         $data=[
-            'listCategories'=>$listCategories,
-            'listMoto'=>$listMoto,
+            'listMoto' => $listMoto,
+            'lastName' => $lastUsername,
+            'userLogin'=> $user,
+        
         ];
-        return $data;
+        return view('home')->with($data);
+        
     }
 
     /**
@@ -58,7 +52,23 @@ class MotoCyclesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->product;
+        $json = json_decode($data);
+
+        $article = new MotoCycles();
+        
+        $article->name = $json->name_p;
+        $article->price = $json->price_p;
+        $article->title = $json->title_p;
+        $article->category_id = $json->category_id_p;
+        $article->specifications = $json->spec_p;
+        $article->detail = $json->detail_p;
+        $article->options = $json->options_p;
+        $article->thumbnail = $json->thumbnail_p;
+        $article->user_id = 3;
+        
+        $article->save();
+        
     }
 
     /**
@@ -112,14 +122,24 @@ class MotoCyclesController extends Controller
     {
         //
     }
-    public function uploadImage(Request $request){
+    public static function uploadImage(Request $request){
         $filename = $request->file('thumbnail')->hashName();
         $img =Image::make($request->file('thumbnail')->getRealPath());
         // crop the best fitting 1:1 ratio (200x200) and resize to 200x200 pixel
-        $img->fit(250);   
+        $img->fit(175);   
         // save the same file as jpg with default quality
-        $img->save(public_path('/storage/thumbnails/'.$filename));
+        $img->save(public_path('/storage/img/product/'.$filename));
 
         return response()->json(['filename'=>$filename]);
     }
+    public static function APIpassdata(){
+        $listCategories = Category::all();
+        $listMoto = MotoCycles::all();
+        $data=[
+            'listCategories'=>$listCategories,
+            'listMoto'=>$listMoto,
+        ];
+        return $data;
+    }
+
 }

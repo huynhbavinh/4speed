@@ -18,6 +18,7 @@ class MotoCycles extends Model
         'detail',
         'options',
         'thumbnail',
+        'user_id',
     ];
     protected $casts = [
         'specifications' => 'array',
