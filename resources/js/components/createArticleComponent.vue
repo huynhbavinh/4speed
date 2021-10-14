@@ -1,6 +1,7 @@
 <template>
     <div id="app">
        <div>
+            <h1>Tạo bài viết</h1>
                <div>
                     <label for="">Tên sản phẩm</label>
                     <input v-model="name" type="text">
@@ -36,16 +37,14 @@
                     <label for="">Chi tiết sản phẩm</label>
                     <input v-model="detail" type="text">
                 </div>
-                <div>
-                    <image-uploader></image-uploader>
-                    <span>{{imgProductStore}}</span>
-                </div>
                 <button @click="getData">submit</button>
        </div>
        <div>
            <h2>xem trước</h2>
            <div class="dashboard">
-               
+                <div>
+                    <image-uploader></image-uploader>
+                </div>
            </div>
        </div>
     </div>
@@ -143,13 +142,19 @@ export default {
     margin-right: 20px;
     width: 150px;
 }
+#app h1{
+    margin-bottom: 10px;
+    color: blueviolet;
+    font-style: italic;
+}
 .dashboard{
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 250px;
     border: 1px dashed rebeccapurple;
 }
 span{
     text-align: center;
+    max-width: 150px;
 }
     
 </style>

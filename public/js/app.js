@@ -2361,7 +2361,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -7286,7 +7285,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#app[data-v-3b59f764]{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    border: 1px solid aqua;\r\n    border-radius: 20px;\r\n    margin: 10px 100px;\r\n    padding: 10px;\r\n    text-align: start;\n}\n#app div div label[data-v-3b59f764]{\r\n    margin-right: 20px;\r\n    width: 150px;\n}\n.dashboard[data-v-3b59f764]{\r\n    width: 300px;\r\n    height: 300px;\r\n    border: 1px dashed rebeccapurple;\n}\nspan[data-v-3b59f764]{\r\n    text-align: center;\n}\r\n    \r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#app[data-v-3b59f764]{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    border: 1px solid aqua;\r\n    border-radius: 20px;\r\n    margin: 10px 100px;\r\n    padding: 10px;\r\n    text-align: start;\n}\n#app div div label[data-v-3b59f764]{\r\n    margin-right: 20px;\r\n    width: 150px;\n}\n#app h1[data-v-3b59f764]{\r\n    margin-bottom: 10px;\r\n    color: blueviolet;\r\n    font-style: italic;\n}\n.dashboard[data-v-3b59f764]{\r\n    width: 200px;\r\n    height: 250px;\r\n    border: 1px dashed rebeccapurple;\n}\nspan[data-v-3b59f764]{\r\n    text-align: center;\r\n    max-width: 150px;\n}\r\n    \r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -40282,6 +40281,8 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "app" } }, [
     _c("div", [
+      _c("h1", [_vm._v("Tạo bài viết")]),
+      _vm._v(" "),
       _c("div", [
         _c("label", { attrs: { for: "" } }, [_vm._v("Tên sản phẩm")]),
         _vm._v(" "),
@@ -40432,34 +40433,19 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c(
-        "div",
-        [
-          _c("image-uploader"),
-          _vm._v(" "),
-          _c("span", [_vm._v(_vm._s(_vm.imgProductStore))])
-        ],
-        1
-      ),
-      _vm._v(" "),
       _c("button", { on: { click: _vm.getData } }, [_vm._v("submit")])
     ]),
     _vm._v(" "),
-    _vm._m(0)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
+    _c("div", [
       _c("h2", [_vm._v("xem trước")]),
       _vm._v(" "),
-      _c("div", { staticClass: "dashboard" })
+      _c("div", { staticClass: "dashboard" }, [
+        _c("div", [_c("image-uploader")], 1)
+      ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

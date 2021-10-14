@@ -38,7 +38,7 @@ Route::group(['prefix'=>'user','middleware'=>['auth','checkBlock','role:user']],
 
 });
 Route::group(['prefix'=>'admin','middleware'=>['auth','checkBlock','role:admin']],function(){
-    Route::resource('dashboard', AdminController::class)->names('admin');
+    Route::resource('article', AdminController::class)->names('admin');
     
 });
 Route::post('like',[CommentController::class,'likeVote'])->name('liked');
