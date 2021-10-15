@@ -1,0 +1,19 @@
+.dashboard {
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    margin: 10px 20px;
+}
+
+.card-article {
+    border: 1px solid aqua;
+    margin: 20px 10px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.card-article h3 a {
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: bold;
+    color: gray;
+}

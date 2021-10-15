@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\MotoCyclesController;
 use Illuminate\Http\Request;
@@ -21,7 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('article', [MotoCyclesController::class,'APIpassdata']);
 Route::post('article', [MotoCyclesController::class,'store']);
-Route::get('article/{id}', [MotoCyclesController::class,'APIpassdata']);
+Route::get('article/{id}', [AdminController::class,'APIpassArticle']);
 
 
 Route::post('upload-thumbnail', [MotoCyclesController::class,'uploadImage'])->name('userUploadImg');

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MotoCycles;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
 class AdminController extends Controller
 {
@@ -13,7 +15,8 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.admin');
+        $articles = MotoCycles::paginate(10);
+        return view('admin.admin')->with('articles',$articles);
     }
 
     /**
@@ -43,9 +46,9 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(MotoCycles $article)
     {
-        //
+        return view('admin.edit')->with('article',$article);
     }
 
     /**
@@ -80,5 +83,14 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public static function APIpassArticle($id){
+        $listCategories = Category::all();
+        $article = MotoCycles::find($id)->first();
+        $data=[
+            'listCategories'=>$listCategories,
+            'moto'=>$article,
+        ];
+        return $data;
     }
 }

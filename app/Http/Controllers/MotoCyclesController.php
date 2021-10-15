@@ -141,5 +141,4 @@ class MotoCyclesController extends Controller
         ];
         return $data;
     }
-
 }

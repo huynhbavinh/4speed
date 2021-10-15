@@ -31,6 +31,8 @@ Vue.component('specifications-component', require('./components/SpecificationsCo
 Vue.component('task-component', require('./components/TaskComponent.vue').default);
 Vue.component('create-article-component', require('./components/createArticleComponent.vue').default);
 Vue.component('image-component', require('./components/imageUploader.vue').default);
+Vue.component('edit-article-component', require('./components/EditArticleComponent.vue').default);
+
 
 
 
