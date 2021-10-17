@@ -4,22 +4,22 @@
             <h1>Chỉnh sửa bài viết</h1>
                <div>
                     <label for="">Tên sản phẩm</label>
-                    <input v-model="name" type="text">
+                    <input v-model="product.name" type="text">
                 </div>
 
                 <div>
                     <label for="">Giá cả</label>
-                    <input v-model="price" type="text">
+                    <input v-model="product.price" type="text">
                 </div>
                 
                 <div>
                     <label for="">Tiêu đề</label>
-                    <input v-model="title" type="text">
+                    <input v-model="product.title" type="text">
                 </div>
 
                 <div>
                     <label for="">Thể loại</label>
-                    <select v-model="category_id" name="" id="">
+                    <select v-model="product.category_id" name="" id="">
                         <option 
                                 v-for="(category,index) in listCategory"
                                 :key="index"
@@ -29,21 +29,20 @@
                         </option>
                     </select>
                 </div>    
-            <div>
+            <!-- <div>
                 <specifications-component></specifications-component>
-            </div>
-
+            </div> -->
                 <div>
                     <label for="">Chi tiết sản phẩm</label>
-                    <input v-model="detail" type="text">
+                    <input v-model="product.detail" type="text">
                 </div>
-                <button>submit</button>
+                <button @click="dataPost">submit</button>
        </div>
        <div>
            <h2>xem trước</h2>
            <div class="dashboard">
                 <div>
-                    <image-uploader></image-uploader>
+                    <img :src="this.url" alt="">
                 </div>
            </div>
        </div>
@@ -64,32 +63,92 @@ export default {
         return{
             oldArticle:this.passData,
             listCategory:[],
-            name:'',
-            price:'',
-            title:'',
-            detail:'',
-            category_id:'',
+            product:
+            {
+                name: '',
+                price:'',
+                title:'',
+                detail:'',
+                category_id:'',
+            },
+            img:'',
+            url :'',
         }
     },
     created(){
-        console.log(this.oldArticle.id);
         this.getArticle();
+        this.setData();
+
+    },
+    updated(){
+
     },
     methods:{
         async getArticle(){
                 try {
                     const response = await axios.get('/api/article/'+this.oldArticle.id);
                     this.listCategory = response.data.listCategories;
-                    console.log(response.data);
                 } catch (error) {
                     this.error = error.response.data;
                 }
             },
+        setData(){
+            this.product.name = this.oldArticle.name;
+            this.product.price = this.oldArticle.price;
+            this.product.title = this.oldArticle.title;
+            this.product.detail = this.oldArticle.detail;
+            this.product.category_id = this.oldArticle.category_id;
+            this.img = this.oldArticle.thumbnail;
+
+            const temp = '/storage/img/product/';
+            this.url = temp + this.img;
+        },
+        async dataPost(){
+                var data = JSON.stringify(this.product);
+                var toJson = JSON.parse(data);
+
+                let formData = new FormData();
+                formData.append('product',JSON.stringify(toJson));
+                let url_post = '/api/article/'+this.oldArticle.id;
+
+                axios.post(url_post,formData).then(response=>{
+                    console.log(response);
+                    console.log(response.data);
+                }).catch((error) => {
+                    console.error(error);
+                });
+        }
     }
     
 }
 </script>
 
-<style>
 
+<style scoped>
+#app{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid aqua;
+    border-radius: 20px;
+    margin: 10px 100px;
+    padding: 10px;
+    text-align: start;
+}
+#app div div label{
+    margin-right: 20px;
+    width: 150px;
+}
+#app h1{
+    margin-bottom: 10px;
+    color: blueviolet;
+    font-style: italic;
+}
+.dashboard{
+    border: 2px dashed rebeccapurple;
+}
+span{
+    text-align: center;
+    max-width: 150px;
+}
+    
 </style>

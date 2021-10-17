@@ -109,7 +109,21 @@ class MotoCyclesController extends Controller
      */
     public function update(Request $request, MotoCycles $motoCycles)
     {
-        //
+        $data = $request->product;
+        $json = json_decode($data);
+        $id = $request->id;
+
+        $update = MotoCycles::find($id)->first();
+        $update->name  = $json->name;
+        $update->price  = $json->price;
+        $update->title  = $json->title;
+        $update->detail  = $json->detail;
+        $update->category_id  = $json->category_id;
+         
+        $update->save();
+    
+        $check = MotoCycles::find($id)->first();
+        dd($check);
     }
 
     /**

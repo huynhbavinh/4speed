@@ -41,6 +41,8 @@
                 </div>
             </div>
         </div>
+        <div id="fb-customer-chat" class="fb-customerchat">
+        </div>
         <div class="profile-btn">
             <h4 class="white-font">
                 <a href="{{route('userProfile.show',auth()->user()->id)}}">

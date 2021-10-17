@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('article', [MotoCyclesController::class,'APIpassdata']);
 Route::post('article', [MotoCyclesController::class,'store']);
 Route::get('article/{id}', [AdminController::class,'APIpassArticle']);
+Route::post('article/{id}', [MotoCyclesController::class,'update']);
+
 
 
 Route::post('upload-thumbnail', [MotoCyclesController::class,'uploadImage'])->name('userUploadImg');

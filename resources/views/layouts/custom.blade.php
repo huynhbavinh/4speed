@@ -134,8 +134,10 @@
         </div>
     </footer>
 </body>
+<script src="{{ asset('js/messenger.js') }}"></script>
 <script src="{{ asset('js/eventMenuScroll.js') }}"></script>
 <script src="{{ asset('js/slideShow.js') }}"></script>
+
 
 
 </html>
