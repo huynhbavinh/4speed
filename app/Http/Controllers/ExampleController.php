@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MotoCycles;
+use App\Models\example;
 use Illuminate\Http\Request;
-use App\Models\Category;
 
-class AdminController extends Controller
+class ExampleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $articles = MotoCycles::paginate(10);
-        return view('admin.admin')->with('articles',$articles);
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        //
     }
 
     /**
@@ -43,21 +41,21 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\example  $example
      * @return \Illuminate\Http\Response
      */
-    public function show(MotoCycles $article)
+    public function show(example $example)
     {
-        return view('admin.edit')->with('article',$article);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\example  $example
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(example $example)
     {
         //
     }
@@ -66,10 +64,10 @@ class AdminController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\example  $example
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, example $example)
     {
         //
     }
@@ -77,20 +75,11 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\example  $example
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(example $example)
     {
         //
-    }
-    public static function APIpassArticle($id){
-        $listCategories = Category::all();
-        $article = MotoCycles::where('id',$id)->firstOrFail();
-        $data=[
-            'listCategories'=>$listCategories,
-            'moto'=>$article,
-        ];
-        return $data;
     }
 }

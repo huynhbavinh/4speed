@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class MotoCycles extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'name',
@@ -19,6 +21,7 @@ class MotoCycles extends Model
         'options',
         'thumbnail',
         'user_id',
+        'is_hot',
     ];
     protected $casts = [
         'specifications' => 'array',

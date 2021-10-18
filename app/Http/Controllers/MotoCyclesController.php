@@ -113,12 +113,14 @@ class MotoCyclesController extends Controller
         $json = json_decode($data);
         $id = $request->id;
 
-        $update = MotoCycles::find($id)->first();
+        $update = MotoCycles::where('id',$id)->firstOrFail();
         $update->name  = $json->name;
         $update->price  = $json->price;
         $update->title  = $json->title;
         $update->detail  = $json->detail;
         $update->category_id  = $json->category_id;
+        $update->is_hot  = $json->is_hot;
+
          
         $update->save();
     

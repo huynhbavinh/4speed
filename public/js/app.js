@@ -2139,6 +2139,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2158,7 +2162,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         price: '',
         title: '',
         detail: '',
-        category_id: ''
+        category_id: '',
+        is_hot: null
       },
       img: '',
       url: ''
@@ -2202,12 +2207,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee, null, [[0, 7]]);
       }))();
     },
+    checkIsHot: function checkIsHot() {},
     setData: function setData() {
       this.product.name = this.oldArticle.name;
       this.product.price = this.oldArticle.price;
       this.product.title = this.oldArticle.title;
       this.product.detail = this.oldArticle.detail;
       this.product.category_id = this.oldArticle.category_id;
+      this.product.is_hot = this.oldArticle.is_hot;
       this.img = this.oldArticle.thumbnail;
       var temp = '/storage/img/product/';
       this.url = temp + this.img;
@@ -2226,10 +2233,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 formData = new FormData();
                 formData.append('product', JSON.stringify(toJson));
                 url_post = '/api/article/' + _this2.oldArticle.id;
-                axios__WEBPACK_IMPORTED_MODULE_2___default().post(url_post, formData).then(function (response) {
-                  console.log(response);
-                  console.log(response.data);
-                })["catch"](function (error) {
+                axios__WEBPACK_IMPORTED_MODULE_2___default().post(url_post, formData).then(function (response) {})["catch"](function (error) {
                   console.error(error);
                 });
 
@@ -7395,7 +7399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#app[data-v-265da33c]{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    border: 1px solid aqua;\r\n    border-radius: 20px;\r\n    margin: 10px 100px;\r\n    padding: 10px;\r\n    text-align: start;\n}\n#app div div label[data-v-265da33c]{\r\n    margin-right: 20px;\r\n    width: 150px;\n}\n#app h1[data-v-265da33c]{\r\n    margin-bottom: 10px;\r\n    color: blueviolet;\r\n    font-style: italic;\n}\n.dashboard[data-v-265da33c]{\r\n    border: 2px dashed rebeccapurple;\n}\nspan[data-v-265da33c]{\r\n    text-align: center;\r\n    max-width: 150px;\n}\r\n    \r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#app[data-v-265da33c]{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    border: 1px solid aqua;\r\n    border-radius: 20px;\r\n    margin: 10px 100px;\r\n    padding: 10px;\r\n    text-align: start;\n}\n#app div div label[data-v-265da33c]{\r\n    margin-right: 20px;\r\n    margin: 5px 0px;\r\n    width: 150px;\n}\n#app h1[data-v-265da33c]{\r\n    margin-bottom: 10px;\r\n    color: blueviolet;\r\n    font-style: italic;\n}\n.dashboard[data-v-265da33c]{\r\n    border: 2px dashed rebeccapurple;\n}\nspan[data-v-265da33c]{\r\n    text-align: center;\r\n    max-width: 150px;\n}\n.edit-table div[data-v-265da33c]{\r\n    margin: 15px 10px;\n}\r\n    \r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -40302,7 +40306,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "app" } }, [
-    _c("div", [
+    _c("div", { staticClass: "edit-table" }, [
       _c("h1", [_vm._v("Chỉnh sửa bài viết")]),
       _vm._v(" "),
       _c("div", [
@@ -40453,6 +40457,50 @@ var render = function() {
             }
           }
         })
+      ]),
+      _vm._v(" "),
+      _c("div", [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.product.is_hot,
+              expression: "product.is_hot"
+            }
+          ],
+          attrs: { type: "checkbox", value: "1", id: "" },
+          domProps: {
+            checked: Array.isArray(_vm.product.is_hot)
+              ? _vm._i(_vm.product.is_hot, "1") > -1
+              : _vm.product.is_hot
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.product.is_hot,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = "1",
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && _vm.$set(_vm.product, "is_hot", $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    _vm.$set(
+                      _vm.product,
+                      "is_hot",
+                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                    )
+                }
+              } else {
+                _vm.$set(_vm.product, "is_hot", $$c)
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("span", [_vm._v("Bài viết HOT")])
       ]),
       _vm._v(" "),
       _c("button", { on: { click: _vm.dataPost } }, [_vm._v("submit")])

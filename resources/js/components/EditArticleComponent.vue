@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-       <div>
+       <div class="edit-table">
             <h1>Chỉnh sửa bài viết</h1>
-               <div>
+               <div >
                     <label for="">Tên sản phẩm</label>
                     <input v-model="product.name" type="text">
                 </div>
@@ -35,6 +35,10 @@
                 <div>
                     <label for="">Chi tiết sản phẩm</label>
                     <input v-model="product.detail" type="text">
+                </div>
+                <div>
+                    <input type="checkbox" value="1" v-model="product.is_hot" id="">
+                    <span>Bài viết HOT</span>
                 </div>
                 <button @click="dataPost">submit</button>
        </div>
@@ -70,6 +74,7 @@ export default {
                 title:'',
                 detail:'',
                 category_id:'',
+                is_hot:null,
             },
             img:'',
             url :'',
@@ -81,7 +86,7 @@ export default {
 
     },
     updated(){
-
+        
     },
     methods:{
         async getArticle(){
@@ -92,12 +97,17 @@ export default {
                     this.error = error.response.data;
                 }
             },
+        checkIsHot(){
+            
+        },
         setData(){
             this.product.name = this.oldArticle.name;
             this.product.price = this.oldArticle.price;
             this.product.title = this.oldArticle.title;
             this.product.detail = this.oldArticle.detail;
             this.product.category_id = this.oldArticle.category_id;
+            this.product.is_hot = this.oldArticle.is_hot;
+
             this.img = this.oldArticle.thumbnail;
 
             const temp = '/storage/img/product/';
@@ -112,8 +122,7 @@ export default {
                 let url_post = '/api/article/'+this.oldArticle.id;
 
                 axios.post(url_post,formData).then(response=>{
-                    console.log(response);
-                    console.log(response.data);
+
                 }).catch((error) => {
                     console.error(error);
                 });
@@ -134,8 +143,10 @@ export default {
     padding: 10px;
     text-align: start;
 }
+
 #app div div label{
     margin-right: 20px;
+    margin: 5px 0px;
     width: 150px;
 }
 #app h1{
@@ -149,6 +160,9 @@ export default {
 span{
     text-align: center;
     max-width: 150px;
+}
+.edit-table div{
+    margin: 15px 10px;
 }
     
 </style>
