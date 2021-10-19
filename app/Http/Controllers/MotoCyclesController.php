@@ -7,6 +7,7 @@ use App\Models\comment;
 use App\Models\MotoCycles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use SebastianBergmann\Environment\Console;
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -123,9 +124,6 @@ class MotoCyclesController extends Controller
 
          
         $update->save();
-    
-        $check = MotoCycles::find($id)->first();
-        dd($check);
     }
 
     /**
@@ -134,9 +132,11 @@ class MotoCyclesController extends Controller
      * @param  \App\Models\MotoCycles  $motoCycles
      * @return \Illuminate\Http\Response
      */
-    public function destroy(MotoCycles $motoCycles)
+    public function destroy(Request $request,MotoCycles $motoCycles)
     {
-        //
+        $id = $request->id;
+        $article = MotoCycles::where('id',$id)->firstOrFail();
+        $article->delete();
     }
     public static function uploadImage(Request $request){
         $filename = $request->file('thumbnail')->hashName();
@@ -149,12 +149,18 @@ class MotoCyclesController extends Controller
         return response()->json(['filename'=>$filename]);
     }
     public static function APIpassdata(){
+        //get categories api
         $listCategories = Category::all();
-        $listMoto = MotoCycles::all();
         $data=[
-            'listCategories'=>$listCategories,
-            'listMoto'=>$listMoto,
+            'listCategories'=>$listCategories
         ];
         return $data;
+    }
+    public function restore(Request $request,MotoCycles $motoCycles)
+    {
+        $id = $request->id;
+        $article = MotoCycles::where('id',$id)->firstOrFail();
+        $article->restore();
+        return back();
     }
 }

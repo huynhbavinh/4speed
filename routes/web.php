@@ -46,6 +46,9 @@ Route::post('post',[CommentController::class,'store'])->name('postComment');
 Route::post('favorite',[UserController::class,'addFavorite'])->name('favorite');
 Route::get('discover',[FamousPeopleController::class,'index'])->name('discover');
 
+Route::get('restore',[MotoCyclesController::class,'restore'])->name('restore');
+
+
 
 
 

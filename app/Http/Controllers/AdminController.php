@@ -15,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $articles = MotoCycles::paginate(10);
+        $articles = MotoCycles::withTrashed()->get();
         return view('admin.admin')->with('articles',$articles);
     }
 

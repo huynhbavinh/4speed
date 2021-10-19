@@ -2143,6 +2143,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -2173,7 +2174,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.getArticle();
     this.setData();
   },
-  updated: function updated() {},
   methods: {
     getArticle: function getArticle() {
       var _this = this;
@@ -2236,13 +2236,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 axios__WEBPACK_IMPORTED_MODULE_2___default().post(url_post, formData).then(function (response) {})["catch"](function (error) {
                   console.error(error);
                 });
+                window.location.reload();
 
-              case 6:
+              case 7:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
+      }))();
+    },
+    dataPostDelete: function dataPostDelete() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var data, toJson, formData, url_post_del;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                data = JSON.stringify(_this3.product);
+                toJson = JSON.parse(data);
+                formData = new FormData();
+                formData.append('product', JSON.stringify(toJson));
+                url_post_del = '/api/article/' + _this3.oldArticle.id + '/deleted';
+                axios__WEBPACK_IMPORTED_MODULE_2___default().post(url_post_del, formData).then(function (response) {})["catch"](function (error) {
+                  console.error(error);
+                });
+                window.location.reload();
+
+              case 7:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   }
@@ -7399,7 +7427,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#app[data-v-265da33c]{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    border: 1px solid aqua;\r\n    border-radius: 20px;\r\n    margin: 10px 100px;\r\n    padding: 10px;\r\n    text-align: start;\n}\n#app div div label[data-v-265da33c]{\r\n    margin-right: 20px;\r\n    margin: 5px 0px;\r\n    width: 150px;\n}\n#app h1[data-v-265da33c]{\r\n    margin-bottom: 10px;\r\n    color: blueviolet;\r\n    font-style: italic;\n}\n.dashboard[data-v-265da33c]{\r\n    border: 2px dashed rebeccapurple;\n}\nspan[data-v-265da33c]{\r\n    text-align: center;\r\n    max-width: 150px;\n}\n.edit-table div[data-v-265da33c]{\r\n    margin: 15px 10px;\n}\r\n    \r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#app[data-v-265da33c]{\r\n    display: flex;\r\n    justify-content: space-between;\r\n    border: 1px solid aqua;\r\n    border-radius: 20px;\r\n    margin: 10px 100px;\r\n    padding: 10px;\r\n    text-align: start;\n}\n#app div div label[data-v-265da33c]{\r\n    margin-right: 20px;\r\n    margin: 5px 0px;\r\n    width: 150px;\n}\n#app h1[data-v-265da33c]{\r\n    margin-bottom: 10px;\r\n    color: blueviolet;\r\n    font-style: italic;\n}\n.dashboard[data-v-265da33c]{\r\n    border: 2px dashed rebeccapurple;\n}\nspan[data-v-265da33c]{\r\n    text-align: center;\r\n    max-width: 150px;\n}\n.edit-table div[data-v-265da33c]{\r\n    margin: 15px 10px;\n}\n.btn[data-v-265da33c]{\r\n    padding: 10px 40px;\r\n    margin: 10px 5px;\r\n    border-radius: 15px;\r\n    color: white;\r\n    font-weight: bold;\n}\n.btn-save[data-v-265da33c]{\r\n    background: linear-gradient(80deg, #2a9ad6 20%, #80b1e6 60%);\n}\n.btn-del[data-v-265da33c]{\r\n    background: linear-gradient(80deg, #d12c2c 20%, #b31a48 60%);\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -40503,7 +40531,15 @@ var render = function() {
         _c("span", [_vm._v("Bài viết HOT")])
       ]),
       _vm._v(" "),
-      _c("button", { on: { click: _vm.dataPost } }, [_vm._v("submit")])
+      _c("div", { staticClass: "btn btn-save", on: { click: _vm.dataPost } }, [
+        _vm._v("Save")
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "btn btn-del", on: { click: _vm.dataPostDelete } },
+        [_vm._v("Delete")]
+      )
     ]),
     _vm._v(" "),
     _c("div", [

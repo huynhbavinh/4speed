@@ -40,7 +40,8 @@
                     <input type="checkbox" value="1" v-model="product.is_hot" id="">
                     <span>Bài viết HOT</span>
                 </div>
-                <button @click="dataPost">submit</button>
+                <div class="btn btn-save" @click="dataPost">Save</div>
+                <div class="btn btn-del" @click="dataPostDelete">Delete</div>
        </div>
        <div>
            <h2>xem trước</h2>
@@ -85,9 +86,6 @@ export default {
         this.setData();
 
     },
-    updated(){
-        
-    },
     methods:{
         async getArticle(){
                 try {
@@ -126,6 +124,22 @@ export default {
                 }).catch((error) => {
                     console.error(error);
                 });
+                window.location.reload();
+        },
+        async dataPostDelete(){
+            var data = JSON.stringify(this.product);
+                var toJson = JSON.parse(data);
+
+                let formData = new FormData();
+                formData.append('product',JSON.stringify(toJson));
+                let url_post_del = '/api/article/'+this.oldArticle.id+'/deleted';
+
+                axios.post(url_post_del,formData).then(response=>{
+                }).catch((error) => {
+                    console.error(error);
+                });
+                window.location.reload();
+
         }
     }
     
@@ -164,5 +178,18 @@ span{
 .edit-table div{
     margin: 15px 10px;
 }
-    
+.btn{
+    padding: 10px 40px;
+    margin: 10px 5px;
+    border-radius: 15px;
+    color: white;
+    font-weight: bold;
+}
+.btn-save{
+    background: linear-gradient(80deg, #2a9ad6 20%, #80b1e6 60%);
+}
+.btn-del{
+    background: linear-gradient(80deg, #d12c2c 20%, #b31a48 60%);
+}
+
 </style>

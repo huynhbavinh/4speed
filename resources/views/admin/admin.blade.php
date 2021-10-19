@@ -27,6 +27,11 @@
                 </li>
                 @endif
             </ul>
+                @if ($article->deleted_at)
+                    <a style="color: red" href="{{route('restore',$article)}}">
+                        Restore
+                    </a>
+                @endif
         </div>
        @endforeach
     </div>
