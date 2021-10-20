@@ -158,9 +158,8 @@ class MotoCyclesController extends Controller
     }
     public function restore(Request $request,MotoCycles $motoCycles)
     {
-        $id = $request->id;
-        $article = MotoCycles::where('id',$id)->firstOrFail();
+        $id = $request->articleID;
+        $article = MotoCycles::withTrashed()->where('id',$id)->firstOrFail();
         $article->restore();
-        return back();
     }
 }

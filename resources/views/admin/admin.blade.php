@@ -12,6 +12,9 @@
                 <a href="{{route('admin.show',$article)}}">
                     {{$article->name}}
                 </a>
+                @if ($article->deleted_at)
+                    <span style="color: red">Deleted</span>
+                @endif
             </h3>
             <ul>
                 <li>
@@ -28,9 +31,7 @@
                 @endif
             </ul>
                 @if ($article->deleted_at)
-                    <a style="color: red" href="{{route('restore',$article)}}">
-                        Restore
-                    </a>
+                    <restore-button-component :pass-data='@json($article)'></restore-button-component>
                 @endif
         </div>
        @endforeach
