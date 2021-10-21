@@ -8,6 +8,8 @@
 
 <script>
 import axios from 'axios'
+import {mapActions, mapGetters, mapMutations} from 'vuex'
+
 export default {
     props:['passData'],
     data(){
@@ -31,7 +33,8 @@ export default {
                 });
             window.location.reload();
         }
-    }
+    },
+
 }
 </script>
 

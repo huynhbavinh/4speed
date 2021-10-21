@@ -8,4 +8,7 @@ export default {
     updateImgProduct(context, newimgProductStore) {
         context.commit('setImgStore', newimgProductStore);
     },
+    updateCountGoBack(context) {
+        context.commit('PlusCountGobackStore');
+    }
 }

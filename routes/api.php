@@ -20,12 +20,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('article', [MotoCyclesController::class,'APIpassdata']);
+Route::get('article', [MotoCyclesController::class,'APIpassdata']); //API categories for edit and create article
 Route::post('article', [MotoCyclesController::class,'store']);
 Route::get('article/{id}', [AdminController::class,'APIpassArticle']);
 Route::post('article/{id}', [MotoCyclesController::class,'update']);
 Route::post('article/{id}/deleted', [MotoCyclesController::class,'destroy']);
 Route::post('restore/{id}',[MotoCyclesController::class,'restore']);
+
+Route::get('admin/article', [AdminController::class,'APIadminGetAllMoto']);
+Route::get('admin/article/{article}', [AdminController::class,'show']);
 
 
 Route::post('upload-thumbnail', [MotoCyclesController::class,'uploadImage'])->name('userUploadImg');

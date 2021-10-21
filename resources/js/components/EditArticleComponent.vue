@@ -56,13 +56,16 @@
 
 <script>
 
-import {mapActions, mapGetters, mapMutations} from 'vuex'
+import {mapActions,mapGetters } from 'vuex'
 import SpecificationsComponent from './SpecificationsComponent.vue'
 import axios from 'axios'
 import ImageUploader from './imageUploader.vue'
 
 export default {
     components: { SpecificationsComponent, ImageUploader },
+    computed:{
+        ...mapGetters(['countGobackStore']),
+    },
     props:['passData'],
     data(){
         return{
@@ -86,6 +89,9 @@ export default {
         this.setData();
 
     },
+    updated(){
+        console.log(this.countGobackStore);
+    },
     methods:{
         async getArticle(){
                 try {
@@ -95,9 +101,6 @@ export default {
                     this.error = error.response.data;
                 }
             },
-        checkIsHot(){
-            
-        },
         setData(){
             this.product.name = this.oldArticle.name;
             this.product.price = this.oldArticle.price;
@@ -126,23 +129,24 @@ export default {
                 });
                 window.location.reload();
         },
-        async dataPostDelete(){
-            var data = JSON.stringify(this.product);
-                var toJson = JSON.parse(data);
+        dataPostDelete(){
+                // var data = JSON.stringify(this.product);
+                // var toJson = JSON.parse(data);
 
-                let formData = new FormData();
-                formData.append('product',JSON.stringify(toJson));
-                let url_post_del = '/api/article/'+this.oldArticle.id+'/deleted';
+                // let formData = new FormData();
+                // formData.append('product',JSON.stringify(toJson));
+                // let url_post_del = '/api/article/'+this.oldArticle.id+'/deleted';
 
-                axios.post(url_post_del,formData).then(response=>{
-                }).catch((error) => {
-                    console.error(error);
-                });
-                window.location.reload();
-
-        }
+                // axios.post(url_post_del,formData).then(response=>{
+                // }).catch((error) => {
+                //     console.error(error);
+                // });
+                this.updateCountGoBack();
+                console.log('asda');
+                // history.back();
+        },
+        ...mapActions(['updateCountGoBack']),
     }
-    
 }
 </script>
 

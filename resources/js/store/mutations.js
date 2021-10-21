@@ -1,7 +1,6 @@
 export default {
     setSpecStore(state, specStore) {
         state.specStore = specStore;
-
     },
     setOptionStore(state, optionStore) {
         state.optionStore = optionStore;
@@ -9,4 +8,7 @@ export default {
     setImgStore(state, imgProductStore) {
         state.imgProductStore = imgProductStore;
     },
+    PlusCountGobackStore(state) {
+        state.countGobackStore++;
+    }
 }

@@ -15,8 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $articles = MotoCycles::withTrashed()->get();
-        return view('admin.admin')->with('articles',$articles);
+        return view('admin.admin');
     }
 
     /**
@@ -90,6 +89,15 @@ class AdminController extends Controller
         $data=[
             'listCategories'=>$listCategories,
             'moto'=>$article,
+        ];
+        return $data;
+    }
+    public static function APIadminGetAllMoto(){
+        $articles = MotoCycles::withTrashed()->get();
+        $listCategories = Category::all();
+        $data = [
+            'listArticles'=>$articles,
+            'listCategories'=>$listCategories,
         ];
         return $data;
     }

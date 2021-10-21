@@ -33,6 +33,9 @@ Vue.component('create-article-component', require('./components/createArticleCom
 Vue.component('image-component', require('./components/imageUploader.vue').default);
 Vue.component('edit-article-component', require('./components/EditArticleComponent.vue').default);
 Vue.component('restore-button-component', require('./components/restoreButtonComponent.vue').default);
+Vue.component('admin-list-product-component', require('./components/AdminListProductComponent.vue').default);
+
+
 
 
 

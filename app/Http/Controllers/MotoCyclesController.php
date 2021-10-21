@@ -137,6 +137,7 @@ class MotoCyclesController extends Controller
         $id = $request->id;
         $article = MotoCycles::where('id',$id)->firstOrFail();
         $article->delete();
+        return back();
     }
     public static function uploadImage(Request $request){
         $filename = $request->file('thumbnail')->hashName();
