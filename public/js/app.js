@@ -2080,18 +2080,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
 //
@@ -2139,21 +2132,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ['editRoute'],
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)(['countGobackStore'])),
   data: function data() {
     return {
       listArticles: null,
       listCategories: null,
-      edit_url: '/admin/article/',
-      goback_count: this.countGobackStore
+      edit_url: '/admin/article/'
     };
   },
   created: function created() {
     this.getArticles();
-  },
-  updated: function updated() {
     console.log(this.countGobackStore);
   },
+  updated: function updated() {},
   methods: {
     getArticles: function getArticles() {
       var _this = this;
@@ -2305,9 +2295,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getArticle();
     this.setData();
   },
-  updated: function updated() {
-    console.log(this.countGobackStore);
-  },
+  updated: function updated() {},
   methods: _objectSpread({
     getArticle: function getArticle() {
       var _this = this;
@@ -2380,17 +2368,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }))();
     },
     dataPostDelete: function dataPostDelete() {
-      // var data = JSON.stringify(this.product);
-      // var toJson = JSON.parse(data);
-      // let formData = new FormData();
-      // formData.append('product',JSON.stringify(toJson));
-      // let url_post_del = '/api/article/'+this.oldArticle.id+'/deleted';
-      // axios.post(url_post_del,formData).then(response=>{
-      // }).catch((error) => {
-      //     console.error(error);
-      // });
-      this.updateCountGoBack();
-      console.log('asda'); // history.back();
+      var data = JSON.stringify(this.product);
+      var toJson = JSON.parse(data);
+      var formData = new FormData();
+      formData.append('product', JSON.stringify(toJson));
+      var url_post_del = '/api/article/' + this.oldArticle.id + '/deleted';
+      axios__WEBPACK_IMPORTED_MODULE_2___default().post(url_post_del, formData).then(function (response) {})["catch"](function (error) {
+        console.error(error);
+      });
+      history.back();
     }
   }, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapActions)(['updateCountGoBack']))
 });
@@ -2797,8 +2783,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 })["catch"](function (error) {
                   console.error(error);
                 });
+                history.back();
 
-              case 6:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -3146,7 +3133,7 @@ __webpack_require__.r(__webpack_exports__);
     state.imgProductStore = imgProductStore;
   },
   PlusCountGobackStore: function PlusCountGobackStore(state) {
-    state.countGobackStore++;
+    state.countGobackStore += 1;
   }
 });
 

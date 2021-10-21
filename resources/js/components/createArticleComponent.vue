@@ -120,7 +120,10 @@ export default {
                 }).catch((error) => {
                     console.error(error);
                     });
+                history.back();
+
             }
+            
     }
 
 }

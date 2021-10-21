@@ -46,22 +46,19 @@ import {mapActions, mapGetters, mapMutations} from 'vuex'
 
 export default {
     props: ['editRoute'],
-    computed:{
-        ...mapGetters(['countGobackStore']),
-    },
     data(){
         return{
             listArticles:null,
             listCategories:null,
             edit_url: '/admin/article/',
-            goback_count: this.countGobackStore,
         }
     },
     created(){
         this.getArticles();
+        console.log(this.countGobackStore);
+
     },
     updated(){
-                console.log(this.countGobackStore);
     },
     methods:{
         async getArticles(){

@@ -9,6 +9,6 @@ export default {
         state.imgProductStore = imgProductStore;
     },
     PlusCountGobackStore(state) {
-        state.countGobackStore++;
+        state.countGobackStore += 1;
     }
 }

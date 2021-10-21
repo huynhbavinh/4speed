@@ -90,7 +90,6 @@ export default {
 
     },
     updated(){
-        console.log(this.countGobackStore);
     },
     methods:{
         async getArticle(){
@@ -130,20 +129,18 @@ export default {
                 window.location.reload();
         },
         dataPostDelete(){
-                // var data = JSON.stringify(this.product);
-                // var toJson = JSON.parse(data);
+                var data = JSON.stringify(this.product);
+                var toJson = JSON.parse(data);
 
-                // let formData = new FormData();
-                // formData.append('product',JSON.stringify(toJson));
-                // let url_post_del = '/api/article/'+this.oldArticle.id+'/deleted';
+                let formData = new FormData();
+                formData.append('product',JSON.stringify(toJson));
+                let url_post_del = '/api/article/'+this.oldArticle.id+'/deleted';
 
-                // axios.post(url_post_del,formData).then(response=>{
-                // }).catch((error) => {
-                //     console.error(error);
-                // });
-                this.updateCountGoBack();
-                console.log('asda');
-                // history.back();
+                axios.post(url_post_del,formData).then(response=>{
+                }).catch((error) => {
+                    console.error(error);
+                });
+                history.back();
         },
         ...mapActions(['updateCountGoBack']),
     }
