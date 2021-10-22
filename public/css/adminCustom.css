@@ -1,19 +1,43 @@
+.admin-content {
+    display: flex;
+}
+
+.admin-content .admin-menu {
+    width: 100px;
+    background-color: rgba(223, 219, 219, 0.5);
+    flex-grow: 1;
+}
+
+.admin-content .menu-service {
+    margin: 10px 0px;
+    padding: 10px 0px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    text-align: center;
+    cursor: pointer;
+}
+
+.admin-content .admin-main {
+    flex-grow: 3;
+}
+
 .dashboard {
     border: 1px solid blueviolet;
     border-radius: 5px;
     margin: 10px 0px;
 }
 
-.card-article {
-    border: 1px solid aqua;
-    margin: 20px 10px;
+.btn {
+    margin: 5px 10px;
     border-radius: 20px;
-    padding: 10px;
+    padding: 5px 10px;
+    background-color: rgba(27, 228, 124, 0.5)
 }
 
-.card-article h3 a {
+.btn-article-create {
     text-decoration: none;
-    font-size: 32px;
+    font-size: 18px;
     font-weight: bold;
     color: gray;
 }

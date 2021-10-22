@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="Listcomponent">
         <h1>
             Danh sách bài viết
         </h1>
@@ -51,6 +51,8 @@ export default {
             listArticles:null,
             listCategories:null,
             edit_url: '/admin/article/',
+            create_url: '/admin/article/create',
+            AdminCreate: false,
         }
     },
     created(){
@@ -65,6 +67,9 @@ export default {
             const response = await axios.get('/api/admin/article/');
             this.listArticles = response.data.listArticles;
             this.listCategories = response.data.listCategories;
+        },
+        OpenCreate(){
+            this.AdminCreate = !this.AdminCreate;
         }
     },
     watch:{
@@ -86,6 +91,7 @@ export default {
     border-radius: 10px;
     padding: 20px;
     margin: 10px;
+    width: 100%;
 }
 .status{
     color: white;
@@ -100,5 +106,8 @@ export default {
     color: red;
     font-size: 16px;
     font-style: italic;
+}
+.Listcomponent{
+    width: 88%;
 }
 </style>
