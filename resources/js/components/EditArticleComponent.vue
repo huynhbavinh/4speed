@@ -126,7 +126,7 @@ export default {
                 }).catch((error) => {
                     console.error(error);
                 });
-                window.location.reload();
+                this.updateCountGoBack();
         },
         dataPostDelete(){
                 var data = JSON.stringify(this.product);
@@ -140,9 +140,9 @@ export default {
                 }).catch((error) => {
                     console.error(error);
                 });
-                history.back();
+                this.updateCountGoBack();
         },
-        ...mapActions(['updateCountGoBack']),
+            ...mapActions(['updateCountGoBack']),   
     }
 }
 </script>

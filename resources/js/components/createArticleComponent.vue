@@ -61,6 +61,7 @@ export default {
         ...mapGetters(['imgProductStore']),
         ...mapGetters(['specStore']),
         ...mapGetters(['optionStore']),
+        ...mapGetters(['countGobackStore']),
     },
     data() {
         return {
@@ -120,10 +121,9 @@ export default {
                 }).catch((error) => {
                     console.error(error);
                     });
-                window.location.reload();
-
-            }
-            
+                this.updateCountGoBack();
+            },
+            ...mapActions(['updateCountGoBack']),   
     }
 
 }

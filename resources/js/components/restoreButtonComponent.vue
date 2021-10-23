@@ -8,7 +8,7 @@
 
 <script>
 import axios from 'axios'
-import {mapActions, mapGetters, mapMutations} from 'vuex'
+import {mapActions} from 'vuex'
 
 export default {
     props:['passData'],
@@ -31,8 +31,9 @@ export default {
                 }).catch((error) => {
                     console.error(error);
                 });
-            window.location.reload();
-        }
+            this.updateCountGoBack();
+        },
+        ...mapActions(['updateCountGoBack']),
     },
 
 }

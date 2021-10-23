@@ -93,7 +93,8 @@ class AdminController extends Controller
         return $data;
     }
     public static function APIadminGetAllMoto(){
-        $articles = MotoCycles::withTrashed()->get();
+        $articles = MotoCycles::withTrashed()->latest()->get();
+        
         $listCategories = Category::all();
         $data = [
             'listArticles'=>$articles,

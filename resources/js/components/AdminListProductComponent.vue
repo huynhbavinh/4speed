@@ -8,8 +8,8 @@
                 :key="index">
                 <li class="admin-product-card">
                     <div>
-                        <h3>
-                            <a :href="edit_url+article.id">
+                        <h3 class="editArticleBtnFake">
+                            <a @click="showEdit">
                                 {{article.name}}
                             </a>
                             <span class="deleted" v-if="article.deleted_at">
@@ -17,6 +17,9 @@
                             </span>
                         </h3>
                         <div>
+                            <edit-article-component :passData='article' v-if="openEdit"></edit-article-component>
+                        </div>
+                        <div v-if="!openEdit">
                             <div v-for="(category,index) in listCategories" 
                                 :key="index">
                                 <h4 v-if="article.category_id == category.id">
@@ -50,17 +53,12 @@ export default {
         return{
             listArticles:null,
             listCategories:null,
-            edit_url: '/admin/article/',
-            create_url: '/admin/article/create',
-            AdminCreate: false,
+            openEdit: false,
         }
     },
     created(){
         this.getArticles();
         console.log(this.countGobackStore);
-
-    },
-    updated(){
     },
     methods:{
         async getArticles(){
@@ -70,13 +68,11 @@ export default {
         },
         OpenCreate(){
             this.AdminCreate = !this.AdminCreate;
+        },
+        showEdit(){
+            this.openEdit = !this.openEdit;
         }
     },
-    watch:{
-        listArticles(){
-           
-        }
-    }
 }
 </script>
 
@@ -109,5 +105,11 @@ export default {
 }
 .Listcomponent{
     width: 88%;
+}
+.editArticleBtnFake{
+    cursor: pointer;
+    color: blue;
+    text-shadow: 10px;
+    font-style: italic;
 }
 </style>

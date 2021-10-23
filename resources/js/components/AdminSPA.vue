@@ -12,17 +12,21 @@
            </div>
        </div>
         <div class="admin-content">
-            <admin-list-product-component v-if="listShow"></admin-list-product-component>
+            <admin-list-product-component v-if="listShow" :key="this.countGobackStore"></admin-list-product-component>
             <create-article-component v-if="createTable"></create-article-component>
         </div>
    </dir>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 import AdminListProductComponent from './AdminListProductComponent.vue';
 import CreateArticleComponent from './createArticleComponent.vue';
 export default {
   components: { AdminListProductComponent, CreateArticleComponent },
+  computed:{
+      ...mapGetters(['countGobackStore'])
+    },
     data(){
         return{
             isSelected: true,
@@ -36,10 +40,16 @@ export default {
         },
         openList(){
             this.listShow = !this.listShow;
+            
         },
         openCreateTable(){
             this.createTable = !this.createTable;
-
+            
+        },
+    },
+    watch:{
+        countGobackStore(){
+            console.log('thay đổi nè');
         }
     }
 }
