@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\MotoCycles;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -99,6 +100,13 @@ class AdminController extends Controller
         $data = [
             'listArticles'=>$articles,
             'listCategories'=>$listCategories,
+        ];
+        return $data;
+    }
+    public function APIadminGetAllUser(){
+        $users = User::where('role_id',1)->get();
+        $data=[
+            'users'=>$users,
         ];
         return $data;
     }

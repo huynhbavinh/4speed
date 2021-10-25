@@ -35,6 +35,9 @@ Vue.component('edit-article-component', require('./components/EditArticleCompone
 Vue.component('restore-button-component', require('./components/restoreButtonComponent.vue').default);
 Vue.component('admin-list-product-component', require('./components/AdminListProductComponent.vue').default);
 Vue.component('admin-spa', require('./components/AdminSPA.vue').default);
+Vue.component('admin-list-user', require('./components/AdminListUser.vue').default);
+Vue.component('admin-list-famous', require('./components/AdminListFarmos.vue').default);
+
 
 
 

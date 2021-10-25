@@ -26,9 +26,10 @@ Route::get('article/{id}', [AdminController::class,'APIpassArticle']);
 Route::post('article/{id}', [MotoCyclesController::class,'update']);
 Route::post('article/{id}/deleted', [MotoCyclesController::class,'destroy']);
 Route::post('restore/{id}',[MotoCyclesController::class,'restore']);
-
 Route::get('admin/article', [AdminController::class,'APIadminGetAllMoto']);
 Route::get('admin/article/{article}', [AdminController::class,'show']);
+//user API
+Route::get('admin/user/', [AdminController::class,'APIadminGetAllUser']);
 
 
 Route::post('upload-thumbnail', [MotoCyclesController::class,'uploadImage'])->name('userUploadImg');
