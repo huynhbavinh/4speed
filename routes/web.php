@@ -37,7 +37,8 @@ Route::group(['prefix'=>'user','middleware'=>['auth','checkBlock','role:user']],
     Route::resource('profile', UserController::class)->names('userProfile');
 
 });
-Route::group(['prefix'=>'admin','middleware'=>['auth','checkBlock','role:admin']],function(){
+//'middleware'=>['auth','checkBlock','role:admin']
+Route::group(['prefix'=>'admin'],function(){
     Route::resource('article', AdminController::class)->names('admin');
     
 });
